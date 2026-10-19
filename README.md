@@ -82,7 +82,7 @@ rag-control-lab/
 ├── reporting.py               # apresentação offline e figuras
 ├── csv_output.py              # esquemas e escrita dos CSVs
 ├── configs/                   # experimento e seleção da rodada analisada
-├── corpus/                    # manifesto, fontes e PDFs locais
+├── corpus/                    # manifesto, fontes e PDFs do experimento
 ├── prompts/                   # instruções dos modelos
 ├── questions.json             # perguntas, gabaritos e critérios da coleta
 ├── results/

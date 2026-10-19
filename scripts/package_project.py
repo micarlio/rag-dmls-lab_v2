@@ -1,10 +1,10 @@
-"""Empacota a pasta de entrega, excluindo PDFs, Git, ambientes e histórico local."""
+"""Empacota a entrega com os PDFs, excluindo Git, ambientes e histórico local."""
 import argparse
 from pathlib import Path
 from zipfile import ZipFile, ZIP_DEFLATED
 
 ROOT=Path(__file__).resolve().parents[1]
-FILES=['.gitignore','README.md','notebook.ipynb','requirements.txt','requirements-analysis.txt',
+FILES=['.gitignore','README.md','artigo.pdf','apresentacao.pdf','notebook.ipynb','requirements.txt','requirements-analysis.txt',
        'rag_lab.py','rag_control.py','reporting.py','csv_output.py','questions.json']
 DIRECTORIES=['configs','docs','prompts','scripts','tests','corpus','results']
 
@@ -15,7 +15,7 @@ def delivery_files(root=ROOT):
     for dirname in DIRECTORIES:
         for p in (root/dirname).rglob('*'):
             rel=p.relative_to(root)
-            if (not p.is_file() or p.suffix.lower() in {'.pdf','.pyc'} or
+            if (not p.is_file() or p.suffix.lower() == '.pyc' or
                     any(part.startswith('.') and part not in {'.gitkeep'} for part in rel.parts) or
                     '__pycache__' in rel.parts or 'pilot' in rel.parts):
                 continue

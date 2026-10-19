@@ -6,8 +6,8 @@ para experimentar mecanismos de controle; o estudo não é sobre aplicações ac
 
 `manifest.csv` registra nomes, fontes institucionais, títulos e SHA-256.
 `documentos/LEIA-ME.txt` conserva os dados fornecidos com a coleção.
-Os PDFs estão disponíveis localmente em `documentos/` e ignorados pelo Git/ZIP.
-Use os links do manifesto para obtê-los e confira os hashes antes de nova inferência.
+Os cinco PDFs estão incluídos no repositório e no ZIP de entrega em `documentos/`.
+Os links do manifesto identificam as fontes; confira os hashes antes de nova inferência.
 Analisar os resultados salvos não exige esses arquivos.
 
 A ordem alfabética dos nomes determina DOC01 a DOC05. Renomear ou substituir
@@ -21,5 +21,3 @@ preservados; não se fez correção retroativa do corpus da coleta.
 
 Não há prova de ausência/presença desses documentos nos dados de treinamento
 do modelo. O controle LLM puro mede respostas sem documentos, não contaminação.
-As condições de redistribuição dos PDFs permanecem a conferir antes de eventual
-publicação; esta preparação não publica nem redistribui os arquivos PDF.
