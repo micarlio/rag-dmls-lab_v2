@@ -1,4 +1,4 @@
-"""Compara correções e regressões após revisão humana completa; sem chamadas LLM."""
+"""Compara as avaliações registradas e exporta as tabelas pareadas de qualidade."""
 import argparse
 import sys
 from pathlib import Path
@@ -6,14 +6,21 @@ import pandas as pd
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
-from rag_lab import summarize_human
+from csv_output import write_dataframe
 
 
 def paired_tables(frame):
-    if not frame.human_verdict.isin(['CORRECT','INCORRECT']).all():
-        raise ValueError('Complete a revisão antes da comparação pareada.')
+    required={'question_id','repetition','variant','verdict','criteria_met','material_error',
+              'llm_calls','latency_seconds','note'}
+    missing=required-set(frame.columns)
+    if missing:
+        raise ValueError('Faltam colunas na avaliação: '+', '.join(sorted(missing)))
+    if not frame.verdict.isin(['CORRECT','INCORRECT']).all():
+        raise ValueError('Complete a avaliação antes da comparação pareada.')
+    if not frame.material_error.isin([True,False]).all():
+        raise ValueError('material_error deve conter valores booleanos.')
     keys=['question_id','repetition']
-    fields=keys+['human_verdict','llm_calls','latency_seconds','note']
+    fields=keys+['verdict','criteria_met','material_error','llm_calls','latency_seconds','note']
     baseline=frame.loc[frame.variant.eq('baseline'),fields]
     if baseline.empty:
         raise ValueError('Falta baseline para comparação.')
@@ -21,15 +28,17 @@ def paired_tables(frame):
     for variant in ['adaptive','self_rag']:
         control=frame.loc[frame.variant.eq(variant),fields]
         if control.empty:
-            continue
+            raise ValueError('Falta a variante para comparação: '+variant)
         pairs=baseline.merge(control,on=keys,how='outer',suffixes=('_baseline','_control'),validate='one_to_one',indicator=True)
         if not pairs['_merge'].eq('both').all():
             raise ValueError('Comparação exige os mesmos pares de pergunta/repetição em cada variante.')
         for row in pairs.to_dict('records'):
-            before=row['human_verdict_baseline']=='CORRECT'
-            after=row['human_verdict_control']=='CORRECT'
+            before=row['verdict_baseline']=='CORRECT'
+            after=row['verdict_control']=='CORRECT'
             outcome=('improved' if after else 'tied_incorrect') if not before else ('tied_correct' if after else 'regressed')
             rows.append({**{k:row[k] for k in keys},'variant':variant,'outcome':outcome,
+                         'criteria_met_delta':row['criteria_met_control']-row['criteria_met_baseline'],
+                         'material_error_removed':row['material_error_baseline'] and not row['material_error_control'],
                          'llm_calls_delta':row['llm_calls_control']-row['llm_calls_baseline'],
                          'latency_delta_seconds':row['latency_seconds_control']-row['latency_seconds_baseline'],
                          'baseline_note':row['note_baseline'],'control_note':row['note_control']})
@@ -42,9 +51,7 @@ def paired_tables(frame):
             summaries.append({'variant':variant,'n':len(group),'improved':improved,'regressed':regressed,
                               'tied_correct':int(counts.get('tied_correct',0)),
                               'tied_incorrect':int(counts.get('tied_incorrect',0)),
-                              'net_correct_change':improved-regressed,'accuracy_delta':(improved-regressed)/len(group),
-                              'llm_calls_delta_mean':group.llm_calls_delta.mean(),
-                              'latency_delta_mean_seconds':group.latency_delta_seconds.mean()})
+                              'accuracy_delta':(improved-regressed)/len(group)})
     return paired,pd.DataFrame(summaries)
 
 
@@ -52,15 +59,10 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('folder',type=Path)
     args=parser.parse_args()
-    summarize_human(args.folder)
-    frame=pd.read_csv(args.folder/'evaluated_answers.csv',keep_default_na=False)
+    frame=pd.read_csv(args.folder/'quality_evaluation.csv',keep_default_na=False)
     paired,summary=paired_tables(frame)
-    paired.to_csv(args.folder/'paired_comparison.csv',index=False)
-    summary.to_csv(args.folder/'summary_paired.csv',index=False)
-    frame['correct']=frame.human_verdict.eq('CORRECT')
-    by_tier=frame.groupby(['variant','difficulty']).agg(n=('correct','size'),accuracy_human=('correct','mean'),
-             llm_calls_mean=('llm_calls','mean'),latency_mean_seconds=('latency_seconds','mean'))
-    by_tier.to_csv(args.folder/'quality_by_difficulty.csv')
+    write_dataframe(paired,args.folder/'quality_paired.csv')
+    write_dataframe(summary,args.folder/'quality_paired_summary.csv')
     print(summary.to_string(index=False))
 
 if __name__=='__main__':main()

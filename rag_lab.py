@@ -22,6 +22,8 @@ from pypdf import PdfReader
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+from csv_output import EVALUATION_FIELDS, write_csv, write_dataframe
+
 
 def read_json(path):
     return json.loads(Path(path).read_text(encoding="utf-8"))
@@ -44,19 +46,6 @@ def file_sha(path):
         for block in iter(lambda: stream.read(1 << 20), b""):
             h.update(block)
     return h.hexdigest()
-
-
-def write_csv(path, rows, fields=None):
-    path = Path(path)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    rows = list(rows)
-    fields = fields or (list(rows[0]) if rows else [])
-    with path.open("w", newline="", encoding="utf-8") as stream:
-        writer = csv.DictWriter(stream, fieldnames=fields, extrasaction="ignore")
-        writer.writeheader()
-        for row in rows:
-            writer.writerow({k: json.dumps(v, ensure_ascii=False) if isinstance(v, (dict, list)) else v
-                             for k, v in row.items()})
 
 
 def chunk_pages(doc_id, filename, pages, size, overlap):
@@ -839,7 +828,8 @@ def validate_questions(dataset, corpus, config):
 
 def runtime_signature(root, config, dataset, corpus, models):
     root = Path(root)
-    files = [root / "rag_lab.py", root / "configs/experiment.json", *sorted((root / "prompts").glob("*.txt"))]
+    files = [root / "rag_lab.py", root / "csv_output.py", root / "configs/experiment.json",
+             *sorted((root / "prompts").glob("*.txt"))]
     if config.get("control_policy") == "evidence_needs":
         files.append(root / "rag_control.py")
     packages = {p: importlib.metadata.version(p) for p in
@@ -950,7 +940,7 @@ def export_results(folder, records):
         answers=("answer", "size"), declared_abstention_rate=("abstained", "mean"),
         llm_calls_mean=("llm_calls", "mean"), retrieval_calls_mean=("retrieval_calls", "mean"),
         latency_mean_seconds=("latency_seconds", "mean"), latency_median_seconds=("latency_seconds", "median"))
-    summary.to_csv(folder / "summary_process.csv")
+    write_dataframe(summary, folder / "summary_process.csv", index=True)
     evaluation_path = folder / "evaluation.csv"
     old = {}
     if evaluation_path.exists():
@@ -972,12 +962,11 @@ def export_results(folder, records):
                "question": r.get("question", ""), "answer": r["answer"],
                "expected_answer": q.get("expected_answer", ""), "rubric": q.get("rubric", []),
                "expected_evidence": q.get("evidence", []), "citations": r.get("citations", []),
-               "evaluation_mode": r.get("evaluation_mode", ""),
-               "human_verdict": "", "human_supported": "", "human_abstained": "", "reviewer": "", "note": ""}
+               "evaluation_mode": r.get("evaluation_mode", ""), "note": ""}
         prior = old.get(key, {})
-        row.update({k: prior.get(k, "") for k in ["human_verdict", "human_supported", "human_abstained", "reviewer", "note"]})
+        row["note"] = prior.get("note", "")
         rows.append(row)
-    write_csv(evaluation_path, rows)
+    write_csv(evaluation_path, rows, EVALUATION_FIELDS)
 
 
 def run_baseline_diagnostic(experiment, corpus, dataset, top_k_list=(4, 8, 12)):
@@ -1011,35 +1000,8 @@ def run_baseline_diagnostic(experiment, corpus, dataset, top_k_list=(4, 8, 12)):
     return results
 
 
-def summarize_human(folder):
-    import pandas as pd
-    folder = Path(folder)
-    answers = pd.read_csv(folder / "answers.csv")
-    reviews = pd.read_csv(folder / "evaluation.csv", keep_default_na=False)
-    keys = ["question_id", "variant", "repetition"]
-    review_fields = keys + ["human_verdict", "human_supported", "human_abstained", "reviewer", "note"]
-    merged = answers.merge(reviews[review_fields], on=keys, how="left", validate="one_to_one")
-    if len(reviews) != len(answers) or not merged.human_verdict.isin(["CORRECT", "INCORRECT"]).all():
-        raise ValueError("Complete a revisão humana de todas as respostas antes de calcular acurácia.")
-    if not merged.human_supported.isin(["YES", "NO", "NA"]).all() or not merged.reviewer.fillna("").str.strip().all():
-        raise ValueError("Preencha human_supported (YES/NO/NA) e reviewer.")
-    if not merged.human_abstained.isin(["YES", "NO"]).all():
-        raise ValueError("Preencha human_abstained (YES/NO); a declaração do modelo pode estar errada.")
-    merged["correct"] = merged.human_verdict.eq("CORRECT")
-    rows = []
-    for variant, frame in merged.groupby("variant"):
-        answered = frame.human_abstained.eq("NO")
-        rows.append({"variant": variant, "n": len(frame), "accuracy_human": frame.correct.mean(),
-                     "coverage_human": answered.mean(), "coverage_declared": (~frame.abstained).mean(),
-                     "precision_answered_human": frame.loc[answered, "correct"].mean() if answered.any() else None})
-    summary = pd.DataFrame(rows)
-    summary.to_csv(folder / "summary_quality.csv", index=False)
-    merged.to_csv(folder / "evaluated_answers.csv", index=False)
-    return summary
-
-
 def automatic_review(experiment, folder, dataset):
-    """Parecer auxiliar do mesmo modelo pequeno; não alimenta a acurácia humana."""
+    """Parecer auxiliar do modelo, separado das métricas dos julgamentos registrados."""
     folder = Path(folder)
     frozen = read_json(folder / "run_manifest.json")["signature"]["questions"]
     if fingerprint(frozen) != fingerprint(dataset):

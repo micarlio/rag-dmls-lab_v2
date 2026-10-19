@@ -1,4 +1,4 @@
-"""Consolida a avaliação por critérios, sem preencher os campos de revisão humana.
+"""Consolida a avaliação por critérios com os cabeçalhos das tabelas de qualidade.
 
 Uso: .venv/bin/python scripts/analyze_quality.py results/runs/<run>
 Os julgamentos ficam em review.json; este script não chama modelos.
@@ -6,9 +6,15 @@ Os julgamentos ficam em review.json; este script não chama modelos.
 import argparse
 import hashlib
 import json
+import sys
 from pathlib import Path
 
 import pandas as pd
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from csv_output import write_dataframe
+from scripts.analyze_paired import paired_tables
 
 
 def sha256(path):
@@ -61,8 +67,8 @@ def analyze(folder):
                              "note": decision["note"]})
     frame = pd.DataFrame(rows)
     frame["correct"] = frame.verdict.eq("CORRECT")
-    frame.to_csv(folder / "quality_evaluation.csv", index=False)
-    pd.DataFrame(criteria).to_csv(folder / "quality_criteria.csv", index=False)
+    write_dataframe(frame, folder / "quality_evaluation.csv")
+    write_dataframe(pd.DataFrame(criteria), folder / "quality_criteria.csv")
     summaries = []
     for variant, group in frame.groupby("variant"):
         answerable = group[group.answerable]
@@ -78,39 +84,14 @@ def analyze(folder):
                           "llm_calls_total": int(group.llm_calls.sum()), "llm_calls_mean": group.llm_calls.mean(),
                           "latency_mean_seconds": group.latency_seconds.mean()})
     summary = pd.DataFrame(summaries)
-    summary.to_csv(folder / "quality_summary.csv", index=False)
-    frame.groupby(["variant", "kind"]).agg(n=("correct", "size"), correct=("correct", "sum"),
+    write_dataframe(summary, folder / "quality_summary.csv")
+    by_kind = frame.groupby(["variant", "kind"]).agg(n=("correct", "size"), correct=("correct", "sum"),
         accuracy=("correct", "mean"), criteria_met_fraction_mean=("criteria_met_fraction", "mean"),
-        llm_calls_mean=("llm_calls", "mean"), latency_mean_seconds=("latency_seconds", "mean")).to_csv(
-            folder / "quality_by_kind.csv")
-    paired = []
-    pair_keys = ["question_id", "repetition"]
-    baseline = frame[frame.variant.eq("baseline")]
-    for variant in ["adaptive", "self_rag"]:
-        pairs = baseline.merge(frame[frame.variant.eq(variant)], on=pair_keys, how="outer",
-            suffixes=("_baseline", "_control"), validate="one_to_one", indicator=True)
-        if pairs.empty or not pairs["_merge"].eq("both").all():
-            raise ValueError("Faltam pares de pergunta/repetição.")
-        for p in pairs.to_dict("records"):
-            before, after = p["correct_baseline"], p["correct_control"]
-            outcome = ("tied_correct" if after else "regressed") if before else ("improved" if after else "tied_incorrect")
-            paired.append({**{k: p[k] for k in pair_keys}, "variant": variant, "outcome": outcome,
-                           "criteria_met_delta": p["criteria_met_control"] - p["criteria_met_baseline"],
-                           "material_error_removed": p["material_error_baseline"] and not p["material_error_control"],
-                           "llm_calls_delta": p["llm_calls_control"] - p["llm_calls_baseline"],
-                           "latency_delta_seconds": p["latency_seconds_control"] - p["latency_seconds_baseline"],
-                           "baseline_note": p["note_baseline"], "control_note": p["note_control"]})
-    paired_frame = pd.DataFrame(paired)
-    paired_frame.to_csv(folder / "quality_paired.csv", index=False)
-    paired_summary = []
-    for variant, group in paired_frame.groupby("variant"):
-        counts = group.outcome.value_counts()
-        improved, regressed = int(counts.get("improved", 0)), int(counts.get("regressed", 0))
-        paired_summary.append({"variant": variant, "n": len(group), "improved": improved, "regressed": regressed,
-                               "tied_correct": int(counts.get("tied_correct", 0)),
-                               "tied_incorrect": int(counts.get("tied_incorrect", 0)),
-                               "accuracy_delta": (improved - regressed) / len(group)})
-    pd.DataFrame(paired_summary).to_csv(folder / "quality_paired_summary.csv", index=False)
+        llm_calls_mean=("llm_calls", "mean"), latency_mean_seconds=("latency_seconds", "mean"))
+    write_dataframe(by_kind, folder / "quality_by_kind.csv", index=True)
+    paired, paired_summary = paired_tables(frame)
+    write_dataframe(paired, folder / "quality_paired.csv")
+    write_dataframe(paired_summary, folder / "quality_paired_summary.csv")
     print(summary.to_string(index=False))
     return frame
 

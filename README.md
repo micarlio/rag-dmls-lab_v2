@@ -5,6 +5,12 @@ busca complementar, verificação e revisão ajudam ou prejudicam a resposta,
 usando como referência um baseline sem buscas adicionais. Cinco TCCs em
 português constituem o corpus de teste; o objeto do estudo são os mecanismos.
 
+## Integrantes
+
+- Francisco Micarlos Teixeira Pinto
+- Rodrigo de Menezes Souza
+- Werbert Arles de Sousa Barradas
+
 ## Materiais
 
 - [Notebook com análise e resultados salvos](notebook.ipynb).
@@ -74,6 +80,7 @@ rag-control-lab/
 ├── rag_lab.py                 # corpus, recuperação, geração e execução
 ├── rag_control.py             # políticas de controle
 ├── reporting.py               # apresentação offline e figuras
+├── csv_output.py              # esquemas e escrita dos CSVs
 ├── configs/                   # experimento e seleção da rodada analisada
 ├── corpus/                    # manifesto, fontes e PDFs locais
 ├── prompts/                   # instruções dos modelos

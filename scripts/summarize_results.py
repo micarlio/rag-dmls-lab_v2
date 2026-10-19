@@ -6,6 +6,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from reporting import load_analysis, plot_results
+from csv_output import write_dataframe
 from scripts.analyze_control import analyze as analyze_control
 from scripts.analyze_quality import analyze as analyze_quality
 
@@ -20,13 +21,13 @@ def main():
     analyze_quality(report['run_dir'])
     modes=report['revision_modes'].copy()
     modes['items_per_generator_call']=modes.items_per_generator_call.map(str)
-    modes.to_csv(report['run_dir']/'self_revision_modes.csv',index=False)
-    report['two_step'].to_csv(report['run_dir']/'control_two_step.csv',index=False)
+    write_dataframe(modes,report['run_dir']/'self_revision_modes.csv')
+    write_dataframe(report['two_step'],report['run_dir']/'control_two_step.csv')
     if args.figures:
         import matplotlib.pyplot as plt
         for fig in plot_results(report,ROOT/'results/figures').values():
             plt.close(fig)
-    print('Análise offline concluída. Dados brutos e avaliação humana não foram modificados.')
+    print('Análise offline concluída. Registros de execução e julgamentos preservados.')
 
 
 if __name__=='__main__':main()

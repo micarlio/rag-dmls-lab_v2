@@ -67,7 +67,7 @@ def main():
         return
 
     # Não misturar prompts/código/gabaritos alterados durante uma execução.
-    frozen_files = [ROOT / 'rag_lab.py', ROOT / 'configs/experiment.json',
+    frozen_files = [ROOT / 'rag_lab.py', ROOT / 'csv_output.py', ROOT / 'configs/experiment.json',
                     ROOT / 'questions.json', *sorted((ROOT / 'prompts').glob('*.txt'))]
     if config.get('control_policy') == 'evidence_needs':
         frozen_files.append(ROOT / 'rag_control.py')

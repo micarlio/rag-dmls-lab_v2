@@ -5,7 +5,7 @@ from zipfile import ZipFile, ZIP_DEFLATED
 
 ROOT=Path(__file__).resolve().parents[1]
 FILES=['.gitignore','README.md','notebook.ipynb','requirements.txt','requirements-analysis.txt',
-       'rag_lab.py','rag_control.py','reporting.py','questions.json']
+       'rag_lab.py','rag_control.py','reporting.py','csv_output.py','questions.json']
 DIRECTORIES=['configs','docs','prompts','scripts','tests','corpus','results']
 
 

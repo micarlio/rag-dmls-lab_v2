@@ -4,11 +4,15 @@ Uso: .venv/bin/python scripts/analyze_control.py results/runs/<run>
 As decisões semânticas estão em review.json, não são inferidas por palavras-chave.
 """
 import argparse
-import csv
 import hashlib
 import json
+import sys
 from collections import Counter
 from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from csv_output import write_csv as write_result_csv
 
 
 def digest(path):
@@ -98,12 +102,7 @@ def load_review(folder):
 def write_csv(path, rows):
     if not rows:
         raise ValueError("Tabela vazia: " + str(path))
-    with Path(path).open("w", newline="", encoding="utf-8") as stream:
-        writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
-        writer.writeheader()
-        for row in rows:
-            writer.writerow({k: json.dumps(v, ensure_ascii=False) if isinstance(v, (dict, list)) else v
-                             for k, v in row.items()})
+    write_result_csv(path, rows)
 
 
 def analyze(folder, check_only=False, quiet=False):
