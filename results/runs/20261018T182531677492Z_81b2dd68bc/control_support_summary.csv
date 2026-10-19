@@ -1,0 +1,7 @@
+support_classification,count
+appropriate_flag,30
+correct_approval,25
+false_approval,10
+false_rejection,16
+text_supported_extraction_error,2
+undetermined,28

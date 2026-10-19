@@ -1,0 +1,354 @@
+[
+  {
+    "at_utc": "2026-10-18T18:25:31.677492+00:00",
+    "events": [
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 49,
+        "load_duration": 2082254292,
+        "seconds": 2.125273374840617
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 47,
+        "load_duration": 810599625,
+        "seconds": 0.8456547919195145
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 53,
+        "load_duration": 805491917,
+        "seconds": 0.8407817499246448
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 46,
+        "load_duration": 797990542,
+        "seconds": 0.8307012501172721
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 41,
+        "load_duration": 793352875,
+        "seconds": 0.8185731249395758
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 45,
+        "load_duration": 1061797917,
+        "seconds": 1.0962675840128213
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 61,
+        "load_duration": 800139916,
+        "seconds": 0.8328955001197755
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 45,
+        "load_duration": 800141667,
+        "seconds": 0.8325738329440355
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 32,
+        "load_duration": 794323500,
+        "seconds": 0.8346686251461506
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 48,
+        "load_duration": 798317541,
+        "seconds": 0.8308899169787765
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 50,
+        "load_duration": 793431167,
+        "seconds": 0.8260029579978436
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 45,
+        "load_duration": 795338792,
+        "seconds": 0.827456041937694
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 34,
+        "load_duration": 795346917,
+        "seconds": 0.8294733329676092
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 58,
+        "load_duration": 796066042,
+        "seconds": 0.8312598748598248
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 47,
+        "load_duration": 796282458,
+        "seconds": 0.825878000119701
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 47,
+        "load_duration": 796417917,
+        "seconds": 0.8274545420426875
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 36,
+        "load_duration": 800376959,
+        "seconds": 0.8333535001147538
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 48,
+        "load_duration": 792887625,
+        "seconds": 0.8248955840244889
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 44,
+        "load_duration": 796399041,
+        "seconds": 0.8315024999901652
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 41,
+        "load_duration": 795289750,
+        "seconds": 0.8254471670370549
+      },
+      {
+        "role": "generator",
+        "model": "qwen2.5:3b",
+        "seed": 42,
+        "prompt_eval_count": 45,
+        "eval_count": 22,
+        "load_duration": 4399323167,
+        "done_reason": "stop",
+        "raw": "{\n  \"answer\": \"OK\", \"abstained\": false, \"citations\": []\n}",
+        "seconds": 5.521847125142813
+      }
+    ]
+  },
+  {
+    "at_utc": "2026-10-18T19:33:15.521242+00:00",
+    "events": [
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 49,
+        "load_duration": 2990120000,
+        "seconds": 3.03722554189153
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 47,
+        "load_duration": 1052505000,
+        "seconds": 1.0870877499692142
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 53,
+        "load_duration": 812388584,
+        "seconds": 0.8484847499057651
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 46,
+        "load_duration": 1055733750,
+        "seconds": 1.0867631249129772
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 41,
+        "load_duration": 1077096084,
+        "seconds": 1.1364782499149442
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 45,
+        "load_duration": 1055307792,
+        "seconds": 1.1168727918993682
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 61,
+        "load_duration": 1054687459,
+        "seconds": 1.0919678751379251
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 45,
+        "load_duration": 1042471083,
+        "seconds": 1.0818762090057135
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 32,
+        "load_duration": 1066412000,
+        "seconds": 1.0979600420687348
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 48,
+        "load_duration": 1307881750,
+        "seconds": 1.3422943342011422
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 50,
+        "load_duration": 1050673042,
+        "seconds": 1.184315875172615
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 45,
+        "load_duration": 2160216542,
+        "seconds": 2.265643874881789
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 34,
+        "load_duration": 1067008834,
+        "seconds": 1.0988194581586868
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 58,
+        "load_duration": 1852685041,
+        "seconds": 1.9038114589639008
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 47,
+        "load_duration": 1582921792,
+        "seconds": 1.621028458001092
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 47,
+        "load_duration": 1821158916,
+        "seconds": 1.856432583881542
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 36,
+        "load_duration": 1538753208,
+        "seconds": 1.5743468748405576
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 48,
+        "load_duration": 1303334333,
+        "seconds": 1.3380560840014368
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 44,
+        "load_duration": 1050174417,
+        "seconds": 1.0923332499805838
+      },
+      {
+        "role": "embedding",
+        "model": "embeddinggemma:300m",
+        "inputs": 1,
+        "prompt_eval_count": 41,
+        "load_duration": 1048795875,
+        "seconds": 1.0809171251021326
+      },
+      {
+        "role": "generator",
+        "model": "qwen2.5:3b",
+        "seed": 42,
+        "prompt_eval_count": 45,
+        "eval_count": 22,
+        "load_duration": 7705238667,
+        "done_reason": "stop",
+        "raw": "{\n  \"answer\": \"OK\", \"abstained\": false, \"citations\": []\n}",
+        "seconds": 8.838826125022024
+      }
+    ]
+  }
+]

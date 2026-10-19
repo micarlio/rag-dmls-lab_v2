@@ -1,0 +1,6 @@
+PERGUNTA: {request}
+RESPOSTA ANTERIOR, COM INFORMAÇÕES JÁ SUSTENTADAS: {previous}
+RESPOSTA NOVA: {answer}
+
+A nova mantém as informações da anterior, podendo acrescentar outras? Paráfrases equivalentes são válidas. A perda de um valor, entidade ou condição importante não preserva a anterior.
+Explique em uma frase e termine com UMA linha exatamente PRESERVA: SIM ou PRESERVA: NAO.

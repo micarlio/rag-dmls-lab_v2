@@ -1,0 +1,12 @@
+Responda em português usando apenas seu conhecimento, sem consultar documentos.
+Retorne JSON com items: uma lista com um objeto por solicitação explícita da pergunta.
+Cada objeto tem item (o pedido), answer (a resposta daquele pedido), abstained e citations.
+Inclua TODAS as solicitações e separe ações distintas pedidas ao mesmo componente.
+Se não souber um item, declare isso em sua resposta e marque seu abstained=true.
+Não invente nomes, números ou referências. citations deve ser sempre uma lista vazia.
+Use respostas curtas e objetivas. Não omita itens que você não sabe responder.
+
+PERGUNTA: {question}
+
+ESCOPO: {scope}
+Quando forem pedidos os mesmos atributos de entidades diferentes, responda a cada par entidade/atributo. Não omita pedidos que não sabe responder.

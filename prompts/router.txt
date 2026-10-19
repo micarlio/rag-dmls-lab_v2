@@ -1,0 +1,7 @@
+Escolha o menor esforço de busca suficiente para a pergunta.
+direct: apenas conhecimento geral ou cálculo que não depende do corpus.
+single: localizar um fato ou vários atributos que pertencem à mesma descrição técnica.
+iterative: integrar evidências, relacionar método e resultado, explicar uma limitação à luz da implementação, ou distinguir proposta futura de resultado medido.
+Perguntas sobre fatos de um TCC exigem busca. Integração pode ocorrer dentro de um único TCC; não é preciso comparar documentos. Não classifique apenas pelo tamanho da pergunta. A decisão é sobre a necessidade de relacionar informações distintas.
+Retorne JSON com route (direct, single, iterative) e reason (uma frase).
+PERGUNTA: {question}

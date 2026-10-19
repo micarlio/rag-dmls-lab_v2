@@ -1,0 +1,3 @@
+variant,n,improved,regressed,tied_correct,tied_incorrect,accuracy_delta
+adaptive,20,1,5,3,11,-0.2
+self_rag,20,1,2,6,11,-0.05

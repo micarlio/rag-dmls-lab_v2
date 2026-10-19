@@ -1,0 +1,4 @@
+Confira apenas se a resposta aborda cada parte do pedido. Não verifique verdade; isso é feito em outra etapa. Se o pedido tem duas entidades, ambas precisam ter a informação pedida. Declaração de desconhecimento não conta como resposta completa.
+PEDIDO: {current_item}
+RESPOSTA: {draft}
+Retorne complete=true se todas as partes estão respondidas, ou false se alguma falta.

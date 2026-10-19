@@ -1,0 +1,13 @@
+variant,kind,n,correct,accuracy,criteria_met_fraction_mean,llm_calls_mean,latency_mean_seconds
+adaptive,direct,5,2,0.4,0.4,4.6,35.36390819172375
+adaptive,synthesis,10,1,0.1,0.31666666666666665,9.0,99.69421019577422
+adaptive,unanswerable,5,1,0.2,0.4,5.6,46.0258437414188
+baseline,direct,5,4,0.8,0.8,1.0,8.678488733246922
+baseline,synthesis,10,1,0.1,0.3,1.0,16.82258352073841
+baseline,unanswerable,5,3,0.6,0.8,1.0,9.830206283787266
+pure_llm,direct,5,0,0.0,0.0,1.0,3.9322364665567875
+pure_llm,synthesis,10,0,0.0,0.0,1.0,6.171454066596925
+pure_llm,unanswerable,5,2,0.4,0.5,1.0,4.189992433367297
+self_rag,direct,5,4,0.8,0.8,8.6,57.222703350288796
+self_rag,synthesis,10,1,0.1,0.4333333333333333,28.8,240.74311717520467
+self_rag,unanswerable,5,2,0.4,0.6,15.4,100.6569069663994

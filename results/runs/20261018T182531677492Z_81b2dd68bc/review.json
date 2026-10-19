@@ -1,0 +1,3201 @@
+{
+  "schema_version": "1.0",
+  "reviewer": "Codex (IA)",
+  "reviewed_at_utc": "2026-10-18T20:31:08.460447+00:00",
+  "independent_human_review": false,
+  "blinded": false,
+  "focus": "Mecanismos de controle; qualidade final integral é complementar.",
+  "methodology": [
+    "Anotação qualitativa retrospectiva, após observar os resultados, de todas as 20 perguntas e 40 cadeias de controle.",
+    "Critérios do pedido/rubrica congelada, sem aceitar requisitos inventados pelo planejador como novas obrigações do usuário.",
+    "Evidência nova significa informação que complementa ou desambigua um critério antes ausente/parcial; pode cobrir só parte do critério.",
+    "Encontrar nos hits, entregar no contexto e usar na resposta são etapas diferentes. Testemunhas literais não substituem a anotação semântica.",
+    "Apoio do crítico é avaliado contra seu recorte real; insuficiência de cobertura não torna uma afirmação sustentada falsa.",
+    "UNDETERMINED não entra como acerto/erro do crítico. Artefato epascal_stop é separado de erro do crítico contra o texto extraído.",
+    "Efeitos mistos não são vitórias. Benefício sobre o próprio rascunho não implica superioridade sobre o baseline.",
+    "Falhas de caracterização dos cenários foram preservadas e documentadas; não foram alteradas as perguntas nem removidos casos.",
+    "Gabarito Q02 interpretado segundo as fontes: compartilha-se a planilha com a conta, não o arquivo JSON com a planilha.",
+    "Rubricas auxiliares julgadas integralmente, sem tolerar troca de identificadores; abstenção auxiliar exclui metaitens não pedidos."
+  ],
+  "input_sha256": {
+    "run_manifest.json": "612208372bd7ed44c58d7ccf6a6d0afc871e5653392a3011ebb71398689071ca",
+    "traces.jsonl": "1a1a070d2023c23bfcb5c47a057cc43a5d352d1cfced8ca3b9743f3521235f77",
+    "answers.csv": "a870a55da6d275522b0bd85758dd2aeccd4aff37a68642baee4ca94cab46715a",
+    "interruption.json": "e7181ae6cca60002e4d4adc0166e5859410c22ade026a13fc9b8cd0e479412cf"
+  },
+  "protected_human_evaluation_sha256": "ed91318aab09ade648c8dd2f05d095f26a5711875d30883978471a76091b80c0",
+  "source_checks": {
+    "pdf_hashes_match_manifest": true,
+    "all_286_cached_pages_match_current_pdf_extraction": true,
+    "all_final_evidence_passages_are_literal_substrings": true
+  },
+  "integrity_note": "Inspeção anterior registrou fingerprint 81b2dd68bcba416cc55b028487eb1fe96cdc89ed8516d0e514c967f39048ad55; atual é 866680b14025c326dcaf1187ea539db986e120f5c1f0c98e74718c094d19650d. Metadados atuais consistem internamente, mas houve alteração desde a inspeção e a história da retomada não está esclarecida. Não inferir congelamento histórico apenas dos hashes atuais.",
+  "decisions": [
+    {
+      "question_id": "Q01",
+      "variant": "pure_llm",
+      "repetition": 1,
+      "answer_sha256": "021be84ca2c8aaa69ba65774d88c285d1c6d6c3fbe1c541f0c8f83b00a060e5e",
+      "rubric_statuses": [
+        "MISSING"
+      ],
+      "material_error": false,
+      "abstention": "FULL",
+      "citation_support": "NOT_APPLICABLE",
+      "note": "Recusa o fato específico."
+    },
+    {
+      "question_id": "Q01",
+      "variant": "baseline",
+      "repetition": 1,
+      "answer_sha256": "5dc3146ca1e869f22e36143c995b59efbf4777485d779633f3fb6d58a6500a64",
+      "rubric_statuses": [
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "TTL correto."
+    },
+    {
+      "question_id": "Q01",
+      "variant": "adaptive",
+      "repetition": 1,
+      "answer_sha256": "eb9386bbf291415eee76f0c49547d883c4cf4ff1d7af490bbab670f1e25310c9",
+      "rubric_statuses": [
+        "WRONG"
+      ],
+      "material_error": true,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Substitui TTL de 120 segundos por 24 horas; seletor elimina a sentença decisiva."
+    },
+    {
+      "question_id": "Q01",
+      "variant": "self_rag",
+      "repetition": 1,
+      "answer_sha256": "612c136253bc206df0a96eb253d62575b841832984e2e09be1714495b700e303",
+      "rubric_statuses": [
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Preserva TTL correto, sem busca extra."
+    },
+    {
+      "question_id": "Q02",
+      "variant": "pure_llm",
+      "repetition": 1,
+      "answer_sha256": "b1a8910f35af8e1e64f19fe3f63a0d8eb16bff853cd21aba053150525f1af377",
+      "rubric_statuses": [
+        "PARTIAL",
+        "MISSING"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "NOT_APPLICABLE",
+      "note": "OAuth genérico, sem mecanismo e motivo específico."
+    },
+    {
+      "question_id": "Q02",
+      "variant": "baseline",
+      "repetition": 1,
+      "answer_sha256": "f5e6e44e22c05fe5db56b942088acc92e0176a85b86f005268d6d7d8c2284fb4",
+      "rubric_statuses": [
+        "PARTIAL",
+        "WRONG"
+      ],
+      "material_error": true,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Conta de serviço parcial; confunde Drive API com compartilhamento."
+    },
+    {
+      "question_id": "Q02",
+      "variant": "adaptive",
+      "repetition": 1,
+      "answer_sha256": "209f9043f577f2a5a529687cc6cbfc105f8d8f0e4e3b9a04551b4be5de37ce60",
+      "rubric_statuses": [
+        "PARTIAL",
+        "WRONG"
+      ],
+      "material_error": true,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Autenticação ganha detalhes, mas motivo da Drive API continua incorreto."
+    },
+    {
+      "question_id": "Q02",
+      "variant": "self_rag",
+      "repetition": 1,
+      "answer_sha256": "d3fca99e60b9d0b8eb4673deb234a08a2d0cfe8a1d98a6b3f4d9a7556fde63a2",
+      "rubric_statuses": [
+        "PARTIAL",
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Corrige o motivo da Drive API; conserva autenticação original incompleta em JSON/compartilhamento."
+    },
+    {
+      "question_id": "Q03",
+      "variant": "pure_llm",
+      "repetition": 1,
+      "answer_sha256": "ec257d985037bd97d56fe4f351d6d70ad9292f3799a3ec827ba4ceabe15b3aee",
+      "rubric_statuses": [
+        "WRONG",
+        "PARTIAL",
+        "MISSING"
+      ],
+      "material_error": true,
+      "abstention": "NONE",
+      "citation_support": "NOT_APPLICABLE",
+      "note": "Tratamento genérico inclui remoção/substituição e comportamento de interface não confirmado."
+    },
+    {
+      "question_id": "Q03",
+      "variant": "baseline",
+      "repetition": 1,
+      "answer_sha256": "46bd043fc32037edb078a527142ea81868222d5f68d17b192d89aec5ccdbc50f",
+      "rubric_statuses": [
+        "MET",
+        "PARTIAL",
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Limpeza correta; conserva último estado, mas omite condições precisas de intervalo inválido."
+    },
+    {
+      "question_id": "Q03",
+      "variant": "adaptive",
+      "repetition": 1,
+      "answer_sha256": "d0acda82e71b0df54d99d8c73404fbc386ef2b6cf79ee3c3f73e7c567d099201",
+      "rubric_statuses": [
+        "PARTIAL",
+        "MISSING",
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Perde errors=coerce e manutenção do estado; resposta de interceptação é sustentada na p.48, porém incompleta."
+    },
+    {
+      "question_id": "Q03",
+      "variant": "self_rag",
+      "repetition": 1,
+      "answer_sha256": "011a1443e8c54c3f1829eb73e249d9b207c2e0a0244ab87dff24c01ce10ad108",
+      "rubric_statuses": [
+        "MET",
+        "PARTIAL",
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Corrige duplicatas que removiam datas inválidas; preserva respostas boas, sem explicitar condições do intervalo."
+    },
+    {
+      "question_id": "Q04",
+      "variant": "pure_llm",
+      "repetition": 1,
+      "answer_sha256": "18c9fa3f2c30fa4b3e3986df17362fcae07973e5e4a789ca343bca61541116db",
+      "rubric_statuses": [
+        "MET",
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "FULL",
+      "citation_support": "NOT_APPLICABLE",
+      "note": "Recusa sem inventar valor."
+    },
+    {
+      "question_id": "Q04",
+      "variant": "baseline",
+      "repetition": 1,
+      "answer_sha256": "e56302b32ee0b2d18f426a138d945b30b0bbb495f11f58a258520b6700ffb52b",
+      "rubric_statuses": [
+        "MET",
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "FULL",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Recusa sem inventar valor."
+    },
+    {
+      "question_id": "Q04",
+      "variant": "adaptive",
+      "repetition": 1,
+      "answer_sha256": "5dbfd03b59c8245ddc9579ecc525f1ad7b84f538a82a071fac2cd99373239e11",
+      "rubric_statuses": [
+        "WRONG",
+        "WRONG"
+      ],
+      "material_error": true,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Confunde TTL de cache com mediana de latência."
+    },
+    {
+      "question_id": "Q04",
+      "variant": "self_rag",
+      "repetition": 1,
+      "answer_sha256": "5dbfd03b59c8245ddc9579ecc525f1ad7b84f538a82a071fac2cd99373239e11",
+      "rubric_statuses": [
+        "WRONG",
+        "WRONG"
+      ],
+      "material_error": true,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Converte recusa adequada em 120 ms; verificador aprova troca de métrica/unidade."
+    },
+    {
+      "question_id": "Q05",
+      "variant": "pure_llm",
+      "repetition": 1,
+      "answer_sha256": "9ff8cd966ff30eedee2f2ca2587a1ec46fd0e724a0d1486a79aab0f4eb4d519c",
+      "rubric_statuses": [
+        "MISSING"
+      ],
+      "material_error": false,
+      "abstention": "FULL",
+      "citation_support": "NOT_APPLICABLE",
+      "note": "Não sabe o software."
+    },
+    {
+      "question_id": "Q05",
+      "variant": "baseline",
+      "repetition": 1,
+      "answer_sha256": "a40a2aa876d5e30f2b4d7d3c6358b3b8b606cabdd77a089bf1bf30dc64d58c98",
+      "rubric_statuses": [
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Identifica Fusion 360."
+    },
+    {
+      "question_id": "Q05",
+      "variant": "adaptive",
+      "repetition": 1,
+      "answer_sha256": "68f0eda9209748f8ef983c3ae10fd6787e6f210f1532ad01f5ccf70ba2770259",
+      "rubric_statuses": [
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Mantém Fusion 360 por fallback ao contexto inicial após seleção missing."
+    },
+    {
+      "question_id": "Q05",
+      "variant": "self_rag",
+      "repetition": 1,
+      "answer_sha256": "68f0eda9209748f8ef983c3ae10fd6787e6f210f1532ad01f5ccf70ba2770259",
+      "rubric_statuses": [
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Confirma Fusion 360 sem busca extra."
+    },
+    {
+      "question_id": "Q06",
+      "variant": "pure_llm",
+      "repetition": 1,
+      "answer_sha256": "1c42f3c83933903f55c6f5b342fc7b79784413ca95597e29cef74b50fa32a4b2",
+      "rubric_statuses": [
+        "WRONG",
+        "WRONG"
+      ],
+      "material_error": true,
+      "abstention": "NONE",
+      "citation_support": "NOT_APPLICABLE",
+      "note": "Inventa desbalanceamento e ajuste de velocidade."
+    },
+    {
+      "question_id": "Q06",
+      "variant": "baseline",
+      "repetition": 1,
+      "answer_sha256": "eaad2de856a0a6874cbd162e0713e7b80cf7876f1ea7f4ca9086541d2bdad0a4",
+      "rubric_statuses": [
+        "WRONG",
+        "WRONG"
+      ],
+      "material_error": true,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Confunde mudança mecânica com correção do algoritmo."
+    },
+    {
+      "question_id": "Q06",
+      "variant": "adaptive",
+      "repetition": 1,
+      "answer_sha256": "8b19e17357fd72aff9c9d1da744c9381786794c48c2035ebca8fd73488f902dc",
+      "rubric_statuses": [
+        "WRONG",
+        "MET"
+      ],
+      "material_error": true,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Recupera inversão de sinal, mas também atribui código a ajuste físico de molduras e não identifica inversão de rotação."
+    },
+    {
+      "question_id": "Q06",
+      "variant": "self_rag",
+      "repetition": 1,
+      "answer_sha256": "1b4c08e5067a90670caaeae96557fb7f6f0027f8014e8b22c33824af50cd2312",
+      "rubric_statuses": [
+        "MISSING",
+        "MET"
+      ],
+      "material_error": true,
+      "abstention": "PARTIAL",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Corrige inversão de sinal, mas recusa causa apesar da passagem correta no contexto; mantém uma descrição de substituição mecânica como método de correção."
+    },
+    {
+      "question_id": "Q07",
+      "variant": "pure_llm",
+      "repetition": 1,
+      "answer_sha256": "2d61bf2def1221acb6702d89c15039647ab99da55862ef62d2cec38a6a51758b",
+      "rubric_statuses": [
+        "PARTIAL",
+        "MISSING",
+        "MISSING"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "NOT_APPLICABLE",
+      "note": "Justificativa genérica; não descreve peça ou reparo."
+    },
+    {
+      "question_id": "Q07",
+      "variant": "baseline",
+      "repetition": 1,
+      "answer_sha256": "cff4341a885581a46a4d97d4a65abf2dc913971cd572d51cf11037dbcd3b6eec",
+      "rubric_statuses": [
+        "MET",
+        "MISSING",
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Acerta inadequação e reparo, omite nylon."
+    },
+    {
+      "question_id": "Q07",
+      "variant": "adaptive",
+      "repetition": 1,
+      "answer_sha256": "3229fff7352925e769a2dae9d23f6061074b4f018fb71fb2b381261799675ab3",
+      "rubric_statuses": [
+        "MET",
+        "MET",
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Inclui nylon e servo reserva; recusa item extra de descrição do forno que não foi pedido."
+    },
+    {
+      "question_id": "Q07",
+      "variant": "self_rag",
+      "repetition": 1,
+      "answer_sha256": "c7b466668e50756df9b28adee9eeac8d9c70a13dc9a7dd2e638e5bbca43f2aa1",
+      "rubric_statuses": [
+        "MET",
+        "MET",
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Inclui nylon/servo reserva; uma recusa a item extra não significa ausência de resposta à pergunta."
+    },
+    {
+      "question_id": "Q08",
+      "variant": "pure_llm",
+      "repetition": 1,
+      "answer_sha256": "d9f8b06c628d10b3a0c2b3f156ff77baf14140cad538847ffc4553240628dd0e",
+      "rubric_statuses": [
+        "WRONG",
+        "WRONG"
+      ],
+      "material_error": true,
+      "abstention": "PARTIAL",
+      "citation_support": "NOT_APPLICABLE",
+      "note": "Inventa 1200 graus."
+    },
+    {
+      "question_id": "Q08",
+      "variant": "baseline",
+      "repetition": 1,
+      "answer_sha256": "63c90035105ba98d6c950aeec85fb8853ac0b374ec769cf65f589ffbc8b18ed1",
+      "rubric_statuses": [
+        "MET",
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "FULL",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Recusa temperaturas não medidas."
+    },
+    {
+      "question_id": "Q08",
+      "variant": "adaptive",
+      "repetition": 1,
+      "answer_sha256": "0360b8dcc41b12448922cdd9cd63e70c6b8ce8dcf987228c3a90c9c3df49115c",
+      "rubric_statuses": [
+        "WRONG",
+        "WRONG"
+      ],
+      "material_error": true,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Inventa temperaturas 41/35."
+    },
+    {
+      "question_id": "Q08",
+      "variant": "self_rag",
+      "repetition": 1,
+      "answer_sha256": "e838752ee465860dfbd79b7920783e4ad5229f726cc9b2678735718a25d13830",
+      "rubric_statuses": [
+        "MET",
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "FULL",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Elimina 41/35 do próprio rascunho por falta de apoio; baseline já recusava."
+    },
+    {
+      "question_id": "Q09",
+      "variant": "pure_llm",
+      "repetition": 1,
+      "answer_sha256": "2222e99c1e6a14fdc393272c05100bb634c2eb87f97370de2a960e4f9209510b",
+      "rubric_statuses": [
+        "WRONG"
+      ],
+      "material_error": true,
+      "abstention": "NONE",
+      "citation_support": "NOT_APPLICABLE",
+      "note": "Inventa React e framework DOC03."
+    },
+    {
+      "question_id": "Q09",
+      "variant": "baseline",
+      "repetition": 1,
+      "answer_sha256": "7ecbd7e0c94700fcd2b356e538f22dc4d7cfe5e3c19120be3827bd80c22ba291",
+      "rubric_statuses": [
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Identifica Streamlit."
+    },
+    {
+      "question_id": "Q09",
+      "variant": "adaptive",
+      "repetition": 1,
+      "answer_sha256": "96844b68cd527c1e3ad2cd299b542217a2e7dd842b32db988320d63c03b17e38",
+      "rubric_statuses": [
+        "WRONG"
+      ],
+      "material_error": true,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Troca camada de apresentação por framework de agentes ADK."
+    },
+    {
+      "question_id": "Q09",
+      "variant": "self_rag",
+      "repetition": 1,
+      "answer_sha256": "1af8da3bc27b0743c2c918a304d8034e8676cdbf1936ae4a2cab33690fb5ebff",
+      "rubric_statuses": [
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Preserva Streamlit sem busca extra."
+    },
+    {
+      "question_id": "Q10",
+      "variant": "pure_llm",
+      "repetition": 1,
+      "answer_sha256": "abe37a234334fe3d28e43603144db1ba1aefd250f000cf84a29e28a9a965c164",
+      "rubric_statuses": [
+        "PARTIAL",
+        "MISSING"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "NOT_APPLICABLE",
+      "note": "Repete coordenação/testes de modo genérico."
+    },
+    {
+      "question_id": "Q10",
+      "variant": "baseline",
+      "repetition": 1,
+      "answer_sha256": "cdad8767fd143c4e460108965c63b94dc785fabd9d0756440010f9d304a9787c",
+      "rubric_statuses": [
+        "PARTIAL",
+        "MISSING"
+      ],
+      "material_error": false,
+      "abstention": "PARTIAL",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Papel parcial; recusa detalhes de testes ausentes no pacote."
+    },
+    {
+      "question_id": "Q10",
+      "variant": "adaptive",
+      "repetition": 1,
+      "answer_sha256": "685e99074f2d7df89006ab65264f231ecee83de6bffa42cbf3faced5ff8f4508",
+      "rubric_statuses": [
+        "PARTIAL",
+        "PARTIAL"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Busca p.31 e produz resumo de registro/localização; omite /agents e URLs alcançáveis e parte do papel."
+    },
+    {
+      "question_id": "Q10",
+      "variant": "self_rag",
+      "repetition": 1,
+      "answer_sha256": "c6d5de62daf3717480f65ec1cfe56b16206769e2d3cc6667aa62443e3efb0e83",
+      "rubric_statuses": [
+        "PARTIAL",
+        "PARTIAL"
+      ],
+      "material_error": true,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Busca p.31, porém mistura validação de URLs com endpoints REST do Calendar e conserva declaração de que detalhes não estão documentados."
+    },
+    {
+      "question_id": "Q11",
+      "variant": "pure_llm",
+      "repetition": 1,
+      "answer_sha256": "ae258da0feada6acd5a49347906c5dcbb16f6c6fdadba07cdf15b3b74269879e",
+      "rubric_statuses": [
+        "WRONG",
+        "WRONG"
+      ],
+      "material_error": true,
+      "abstention": "NONE",
+      "citation_support": "NOT_APPLICABLE",
+      "note": "Inventa cobertura e inconsistência de dados."
+    },
+    {
+      "question_id": "Q11",
+      "variant": "baseline",
+      "repetition": 1,
+      "answer_sha256": "69eebe73f073d2478f8e9e77cfcfbbd0cf20264c48ac8e65bfa70e6c942cf308",
+      "rubric_statuses": [
+        "PARTIAL",
+        "WRONG"
+      ],
+      "material_error": true,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Critério parcial e causa errada, tirada da discussão de engajamento."
+    },
+    {
+      "question_id": "Q11",
+      "variant": "adaptive",
+      "repetition": 1,
+      "answer_sha256": "037dfaeb7abfd0b8da3c833cfd777c5d97b9c334be0b1398de52ebe58f5e763d",
+      "rubric_statuses": [
+        "MISSING",
+        "WRONG"
+      ],
+      "material_error": true,
+      "abstention": "PARTIAL",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Lista categorias em vez de critério e declara que causa não está documentada, embora a busca a tenha recuperado."
+    },
+    {
+      "question_id": "Q11",
+      "variant": "self_rag",
+      "repetition": 1,
+      "answer_sha256": "b044ca69410b20246cd8789b1b03a1f679167f75baf7c8c3d3d3780e1d421ce8",
+      "rubric_statuses": [
+        "MISSING",
+        "WRONG"
+      ],
+      "material_error": true,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Troca uma causa sem apoio por outra (validação de campos de tempo) e a aprova."
+    },
+    {
+      "question_id": "Q12",
+      "variant": "pure_llm",
+      "repetition": 1,
+      "answer_sha256": "84efe8c2bf6fd10f0cb832a1e843fbd194decf15a9aaa9dc4f88bab2b3b0bfe4",
+      "rubric_statuses": [
+        "MET",
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "FULL",
+      "citation_support": "NOT_APPLICABLE",
+      "note": "Nega medição do percentual."
+    },
+    {
+      "question_id": "Q12",
+      "variant": "baseline",
+      "repetition": 1,
+      "answer_sha256": "b8f2d8aad237cfe91228ba4fd21f1df45fb92444099aff7e301fc665f177710b",
+      "rubric_statuses": [
+        "MET",
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "FULL",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Recusa corretamente, sem taxa inventada."
+    },
+    {
+      "question_id": "Q12",
+      "variant": "adaptive",
+      "repetition": 1,
+      "answer_sha256": "b39d8928d63e2746f514443790e4610c5ade3c48338b42541ccf7aafb33499bd",
+      "rubric_statuses": [
+        "MET",
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "FULL",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Conserva recusa."
+    },
+    {
+      "question_id": "Q12",
+      "variant": "self_rag",
+      "repetition": 1,
+      "answer_sha256": "e2b78ccc7e7436d597cf74fa37931e5e8b485ce94c6e7e811b81deb682c980ce",
+      "rubric_statuses": [
+        "MET",
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "FULL",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Mantém recusa com redação mais genérica, sem ganho sobre baseline."
+    },
+    {
+      "question_id": "Q13",
+      "variant": "pure_llm",
+      "repetition": 1,
+      "answer_sha256": "8d96dfc7d9c5b6f211d244750f6598c4f21a5f349bb0c09d33ec18face513b19",
+      "rubric_statuses": [
+        "MISSING"
+      ],
+      "material_error": false,
+      "abstention": "FULL",
+      "citation_support": "NOT_APPLICABLE",
+      "note": "Não sabe."
+    },
+    {
+      "question_id": "Q13",
+      "variant": "baseline",
+      "repetition": 1,
+      "answer_sha256": "fa1af1a5cdfa6cb4ca389a982cea5eecfc0a865a3f5b22b80bc2481fb92eb92b",
+      "rubric_statuses": [
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Identifica terminate."
+    },
+    {
+      "question_id": "Q13",
+      "variant": "adaptive",
+      "repetition": 1,
+      "answer_sha256": "20865beefdd8d6518a20ead0700b747b195e83bf707c83753672eeed63164787",
+      "rubric_statuses": [
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Identifica terminate; metaitem adicional não solicitado."
+    },
+    {
+      "question_id": "Q13",
+      "variant": "self_rag",
+      "repetition": 1,
+      "answer_sha256": "cbc25a9a1353d015683e390faaa885bde9c2b5cefb4190a4b822845c0c08034d",
+      "rubric_statuses": [
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Preserva terminate; recusa de descrição extra infla indicador declarado de abstenção."
+    },
+    {
+      "question_id": "Q14",
+      "variant": "pure_llm",
+      "repetition": 1,
+      "answer_sha256": "d7a8c86c3a2fb33175bc31a6f1983c55ba3cb5f257b64ee8278f973626631111",
+      "rubric_statuses": [
+        "MISSING",
+        "MISSING",
+        "MISSING"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "NOT_APPLICABLE",
+      "note": "Resposta tautológica, sem valores ou comportamento."
+    },
+    {
+      "question_id": "Q14",
+      "variant": "baseline",
+      "repetition": 1,
+      "answer_sha256": "24cc873eed84bd8ca6903e5ae80dbc75a02e7a23e50365f04ec0be9c5ce745a0",
+      "rubric_statuses": [
+        "WRONG",
+        "WRONG",
+        "MISSING"
+      ],
+      "material_error": true,
+      "abstention": "PARTIAL",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Confunde Texto/Ícone com taxas gerais de dois benchmarks."
+    },
+    {
+      "question_id": "Q14",
+      "variant": "adaptive",
+      "repetition": 1,
+      "answer_sha256": "e028f980404e6e1c0f7156a2dd9a051d9b1da09558d41d6da948d9177cad3dc6",
+      "rubric_statuses": [
+        "WRONG",
+        "WRONG",
+        "MISSING"
+      ],
+      "material_error": true,
+      "abstention": "PARTIAL",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Mantém confusão mesmo após cabeçalho correto recuperado; descarta OSWorld e trajetórias."
+    },
+    {
+      "question_id": "Q14",
+      "variant": "self_rag",
+      "repetition": 1,
+      "answer_sha256": "e6c8785a1acfe5cf3f4555af8882d06d16aebae0ffa86188fa467348c6aa27c4",
+      "rubric_statuses": [
+        "MET",
+        "WRONG",
+        "MISSING"
+      ],
+      "material_error": true,
+      "abstention": "PARTIAL",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Corrige valores do ScreenSpot em item adicional, mas repete esses valores falsamente no OSWorld; descarta evidência de terminação."
+    },
+    {
+      "question_id": "Q15",
+      "variant": "pure_llm",
+      "repetition": 1,
+      "answer_sha256": "129f57a421d19e5fcc7acf87a4b781abb354944d0ac795a75d384bc20d96a0c1",
+      "rubric_statuses": [
+        "PARTIAL",
+        "MISSING"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "NOT_APPLICABLE",
+      "note": "Acerta apenas direção relativa, sem percentuais/motivo."
+    },
+    {
+      "question_id": "Q15",
+      "variant": "baseline",
+      "repetition": 1,
+      "answer_sha256": "f07ccf8e304a3b50ba3cca59bf7cf5d8f599e91410f76fc63fce099e640d90bb",
+      "rubric_statuses": [
+        "MET",
+        "MET"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Percentuais e exclusão de ancoramento corretos."
+    },
+    {
+      "question_id": "Q15",
+      "variant": "adaptive",
+      "repetition": 1,
+      "answer_sha256": "0fdac9da84f86da401e50bcafd55e86224b1da2671744a0f69d19c4dc52d7941",
+      "rubric_statuses": [
+        "MET",
+        "MISSING"
+      ],
+      "material_error": true,
+      "abstention": "PARTIAL",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Conserva percentuais, omite razão solicitada e atribui contraste preliminar a método principal."
+    },
+    {
+      "question_id": "Q15",
+      "variant": "self_rag",
+      "repetition": 1,
+      "answer_sha256": "86a28c065a93eecd239944f8790b859495a919e4e6e7778294d5ad12f98cad3a",
+      "rubric_statuses": [
+        "MET",
+        "MISSING"
+      ],
+      "material_error": false,
+      "abstention": "PARTIAL",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Conserva percentuais, mas plano perdeu a razão solicitada; trabalha em itens etários não pedidos."
+    },
+    {
+      "question_id": "Q16",
+      "variant": "pure_llm",
+      "repetition": 1,
+      "answer_sha256": "74c90697755895cb1420f618bef42fe56d42ae75ced16cf03ba678c0425773f8",
+      "rubric_statuses": [
+        "MET",
+        "PARTIAL"
+      ],
+      "material_error": true,
+      "abstention": "FULL",
+      "citation_support": "NOT_APPLICABLE",
+      "note": "Recusa valor, mas pressupõe estudo do efeito de batch; não reconhece ausência de ablação."
+    },
+    {
+      "question_id": "Q16",
+      "variant": "baseline",
+      "repetition": 1,
+      "answer_sha256": "e72f613f194a08ca907546695e032ec64d9847c2603a346126e9582658facfb6",
+      "rubric_statuses": [
+        "MET",
+        "PARTIAL"
+      ],
+      "material_error": false,
+      "abstention": "FULL",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Não inventa valor; omite explicação de fatores simultâneos/ausência de ablação."
+    },
+    {
+      "question_id": "Q16",
+      "variant": "adaptive",
+      "repetition": 1,
+      "answer_sha256": "fe17f067b8f932151e8c9aff5b925e45686615a6632047984e6da9f841e73d10",
+      "rubric_statuses": [
+        "MET",
+        "PARTIAL"
+      ],
+      "material_error": false,
+      "abstention": "FULL",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Recusa valores de cinco subpedidos; não explica impossibilidade de isolamento."
+    },
+    {
+      "question_id": "Q16",
+      "variant": "self_rag",
+      "repetition": 1,
+      "answer_sha256": "0cc149aa6c7110ac6fa92b8f1aa2759b524713a1b8a0e240767d634329142c5f",
+      "rubric_statuses": [
+        "MET",
+        "PARTIAL"
+      ],
+      "material_error": false,
+      "abstention": "FULL",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Recusa sem explicar ausência de ablação e fatores simultâneos."
+    },
+    {
+      "question_id": "Q17",
+      "variant": "pure_llm",
+      "repetition": 1,
+      "answer_sha256": "48725e28c0d152d5caad5468f0a2b8e99d8bd8c239ae7ecfe97cb99a8c4b80e9",
+      "rubric_statuses": [
+        "MISSING"
+      ],
+      "material_error": false,
+      "abstention": "FULL",
+      "citation_support": "NOT_APPLICABLE",
+      "note": "Não sabe."
+    },
+    {
+      "question_id": "Q17",
+      "variant": "baseline",
+      "repetition": 1,
+      "answer_sha256": "105c6a821e6aaa7f893351e9571ce70dfe56d82fcccac754ba70a77aafc4a734",
+      "rubric_statuses": [
+        "WRONG"
+      ],
+      "material_error": true,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Responde com ID de chunk em vez de macros."
+    },
+    {
+      "question_id": "Q17",
+      "variant": "adaptive",
+      "repetition": 1,
+      "answer_sha256": "04e3875408e5a1d97df0658441f009d4e51dc195dea8f58ba7b33b3372fe7572",
+      "rubric_statuses": [
+        "PARTIAL"
+      ],
+      "material_error": true,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Localiza macros, mas copia epascal_stop produzido pela extração e inclui IDs no texto."
+    },
+    {
+      "question_id": "Q17",
+      "variant": "self_rag",
+      "repetition": 1,
+      "answer_sha256": "c6e94336f2d22f51bff410f749cb8e1677b5461c78171c55f6f470bb62d70bc3",
+      "rubric_statuses": [
+        "PARTIAL"
+      ],
+      "material_error": true,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Localiza macros, mas conserva artefato epascal_stop; ganho de busca parcial, sem identificação literal exata."
+    },
+    {
+      "question_id": "Q18",
+      "variant": "pure_llm",
+      "repetition": 1,
+      "answer_sha256": "bab0e2e6995ac5011f7a67869eddd94cc48cba370c195af1db0fea928c4024f3",
+      "rubric_statuses": [
+        "MISSING",
+        "MISSING"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "NOT_APPLICABLE",
+      "note": "Não informa mecanismo nem estratégia."
+    },
+    {
+      "question_id": "Q18",
+      "variant": "baseline",
+      "repetition": 1,
+      "answer_sha256": "abc2663bccca8b2fd2a4b5f743c7dc9d04b0d334d007073d9086c76a3ffd8ba3",
+      "rubric_statuses": [
+        "PARTIAL",
+        "MISSING"
+      ],
+      "material_error": false,
+      "abstention": "PARTIAL",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Informa barreiras; omite serialização explícita e nega proposta de estratégia."
+    },
+    {
+      "question_id": "Q18",
+      "variant": "adaptive",
+      "repetition": 1,
+      "answer_sha256": "ee5c55c90678e775c6336ebcb2c83633091471ffaed857346c482ef6e37322f5",
+      "rubric_statuses": [
+        "PARTIAL",
+        "MET"
+      ],
+      "material_error": true,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Encontra tasking, mas descrição adicional de single/confllitos não está sustentada e falta explicitar serialização."
+    },
+    {
+      "question_id": "Q18",
+      "variant": "self_rag",
+      "repetition": 1,
+      "answer_sha256": "18d71c3f749ce61d07c07e5de1d6d4592825b465e8ceec790d2463407dccbc84",
+      "rubric_statuses": [
+        "MET",
+        "WRONG"
+      ],
+      "material_error": true,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Amplia explicação do swap; mantém proposta genérica de substituir diretivas que o texto não apresenta, apesar de tasking estar no contexto."
+    },
+    {
+      "question_id": "Q19",
+      "variant": "pure_llm",
+      "repetition": 1,
+      "answer_sha256": "c049e900a89bbaaba86f1286d9395b2e6a0c2ac3a089c938941f080967ba9f6b",
+      "rubric_statuses": [
+        "WRONG",
+        "PARTIAL",
+        "MISSING"
+      ],
+      "material_error": true,
+      "abstention": "NONE",
+      "citation_support": "NOT_APPLICABLE",
+      "note": "Definição de eficiência incorreta, ressalva vaga."
+    },
+    {
+      "question_id": "Q19",
+      "variant": "baseline",
+      "repetition": 1,
+      "answer_sha256": "10652042dc3b84fe85cc148c884e22a8027d739ef730bbf40e0dc11556e0133e",
+      "rubric_statuses": [
+        "MET",
+        "MET",
+        "MISSING"
+      ],
+      "material_error": false,
+      "abstention": "NONE",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Fórmula e referência com overhead corretas; omite motivo de automação."
+    },
+    {
+      "question_id": "Q19",
+      "variant": "adaptive",
+      "repetition": 1,
+      "answer_sha256": "2e8fb0221b814069969da6c60f9d893b7d71ed20d0d9fedc0ee4221bd39908fa",
+      "rubric_statuses": [
+        "MET",
+        "WRONG",
+        "MISSING"
+      ],
+      "material_error": true,
+      "abstention": "PARTIAL",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Fórmula correta; compara o tempo da referência de uma thread consigo mesmo, trocando sujeito da fonte; omite automação."
+    },
+    {
+      "question_id": "Q19",
+      "variant": "self_rag",
+      "repetition": 1,
+      "answer_sha256": "107ba44cf3cb2ab4e5f41d65010c3aaa31e3294a582855d15a4c556be34b117f",
+      "rubric_statuses": [
+        "MET",
+        "WRONG",
+        "MISSING"
+      ],
+      "material_error": true,
+      "abstention": "PARTIAL",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Falsa aprovação da ressalva ambígua; preserva-a e rejeita candidato que recuperava definição da referência."
+    },
+    {
+      "question_id": "Q20",
+      "variant": "pure_llm",
+      "repetition": 1,
+      "answer_sha256": "fcaa1803641eed06d9fe0b98b292b117c989367023180629fbf27fc3beff5357",
+      "rubric_statuses": [
+        "PARTIAL",
+        "MISSING"
+      ],
+      "material_error": true,
+      "abstention": "PARTIAL",
+      "citation_support": "NOT_APPLICABLE",
+      "note": "Afirma speedup medido sem valor; não reconhece intervenção futura."
+    },
+    {
+      "question_id": "Q20",
+      "variant": "baseline",
+      "repetition": 1,
+      "answer_sha256": "149687bad972669f37f5eedf4e8c21b7c3879c3ecaa9378c600b0ec2e97d7676",
+      "rubric_statuses": [
+        "MET",
+        "PARTIAL"
+      ],
+      "material_error": false,
+      "abstention": "FULL",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Recusa valor; não explica que tasking é futuro."
+    },
+    {
+      "question_id": "Q20",
+      "variant": "adaptive",
+      "repetition": 1,
+      "answer_sha256": "8ff8ea16d8ab8e828fd8b18515df54ef77c007c7a5e56b073d3fdc18fc970a73",
+      "rubric_statuses": [
+        "MET",
+        "PARTIAL"
+      ],
+      "material_error": false,
+      "abstention": "FULL",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Recusa valor; não explica que tasking é futuro."
+    },
+    {
+      "question_id": "Q20",
+      "variant": "self_rag",
+      "repetition": 1,
+      "answer_sha256": "c7b8f5b17ef6014e9cdfbb7048f13d4f31a62c056b399fd280b393b92225ebc3",
+      "rubric_statuses": [
+        "MET",
+        "MISSING"
+      ],
+      "material_error": false,
+      "abstention": "FULL",
+      "citation_support": "SEE_CONTROL_AND_SOURCE_REVIEW",
+      "note": "Substitui recusa por genérica; não explicita caráter futuro já presente no contexto."
+    }
+  ],
+  "control_cases": [
+    {
+      "question_id": "Q01",
+      "initial_criteria": [
+        "FULL"
+      ],
+      "scenario_issue": "",
+      "unrequested_needs": [],
+      "redundant_needs": [],
+      "omitted_requested_aspects": "",
+      "adaptive": {
+        "effect": "regression",
+        "note": "Contexto inicial já tinha 120 s; seleção remove a evidência e gera 24 h.",
+        "new_retrieved_criteria": [],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [],
+        "final_context_criteria": [
+          "ABSENT"
+        ]
+      },
+      "self_rag": {
+        "effect": "no_gain",
+        "note": "Validação preserva 120 s sem revisão.",
+        "new_retrieved_criteria": [],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [],
+        "final_context_criteria": [
+          "FULL"
+        ]
+      }
+    },
+    {
+      "question_id": "Q02",
+      "initial_criteria": [
+        "FULL",
+        "ABSENT"
+      ],
+      "scenario_issue": "Gabarito textual diz chave JSON compartilhada com a planilha. A fonte manda compartilhar a planilha com o e-mail da conta; JSON é a credencial. Rubrica interpretada pelas fontes, sem exigir compartilhar o arquivo JSON.",
+      "unrequested_needs": [],
+      "redundant_needs": [],
+      "omitted_requested_aspects": "",
+      "adaptive": {
+        "effect": "mixed",
+        "note": "Busca de autenticação recupera a p.26 com o motivo correto, mas seleção mantém compartilhamento para o motivo da Drive API.",
+        "new_retrieved_criteria": [
+          2
+        ],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [
+          {
+            "criterion": 2,
+            "doc_id": "DOC01",
+            "page": 26,
+            "source_id": "DOC01:P0026:W0001-0003",
+            "quote": "A ativação da Google Drive API é necessária porque"
+          }
+        ],
+        "final_context_criteria": [
+          "FULL",
+          "ABSENT"
+        ]
+      },
+      "self_rag": {
+        "effect": "benefit",
+        "note": "Detecta motivo sem apoio, recupera p.26 e corrige Drive API. Revisa também autenticação: candidato errado sobre compartilhamento de JSON é aprovado, mas revertido por preservação.",
+        "new_retrieved_criteria": [
+          2
+        ],
+        "new_delivered_criteria": [
+          2
+        ],
+        "own_draft_benefit": true,
+        "own_draft_regression": false,
+        "witnesses": [
+          {
+            "criterion": 2,
+            "doc_id": "DOC01",
+            "page": 26,
+            "source_id": "DOC01:P0026:W0001-0003",
+            "quote": "A ativação da Google Drive API é necessária porque"
+          }
+        ],
+        "final_context_criteria": [
+          "FULL",
+          "FULL"
+        ]
+      }
+    },
+    {
+      "question_id": "Q03",
+      "initial_criteria": [
+        "FULL",
+        "FULL",
+        "FULL"
+      ],
+      "scenario_issue": "",
+      "unrequested_needs": [],
+      "redundant_needs": [
+        3,
+        4
+      ],
+      "omitted_requested_aspects": "",
+      "adaptive": {
+        "effect": "regression",
+        "note": "Busca nova traz material de filtros, mas a geração perde detalhes do estado e da limpeza que o baseline conservava.",
+        "new_retrieved_criteria": [],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [],
+        "final_context_criteria": [
+          "FULL",
+          "FULL",
+          "FULL"
+        ]
+      },
+      "self_rag": {
+        "effect": "benefit",
+        "note": "Corrige duas respostas redundantes que diziam remover datas inválidas; fatos centrais já estavam no contexto. Benefício frente ao próprio rascunho, sem ganho integral sobre baseline.",
+        "new_retrieved_criteria": [],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": true,
+        "own_draft_regression": false,
+        "witnesses": [],
+        "final_context_criteria": [
+          "FULL",
+          "FULL",
+          "FULL"
+        ]
+      }
+    },
+    {
+      "question_id": "Q04",
+      "initial_criteria": [
+        "NA",
+        "NA"
+      ],
+      "scenario_issue": "",
+      "unrequested_needs": [],
+      "redundant_needs": [],
+      "omitted_requested_aspects": "",
+      "adaptive": {
+        "effect": "regression",
+        "note": "Busca de latência não encontra medida; contexto seletivo de TTL induz resposta 120.",
+        "new_retrieved_criteria": [],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [],
+        "final_context_criteria": [
+          "NA",
+          "NA"
+        ]
+      },
+      "self_rag": {
+        "effect": "regression",
+        "note": "Rejeita recusa adequada; seleciona TTL e aprova 120 como latência em ms.",
+        "new_retrieved_criteria": [],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": true,
+        "witnesses": [],
+        "final_context_criteria": [
+          "NA",
+          "NA"
+        ]
+      }
+    },
+    {
+      "question_id": "Q05",
+      "initial_criteria": [
+        "FULL"
+      ],
+      "scenario_issue": "",
+      "unrequested_needs": [],
+      "redundant_needs": [],
+      "omitted_requested_aspects": "",
+      "adaptive": {
+        "effect": "no_gain",
+        "note": "Executa busca mesmo em single; seleção missing faz fallback ao contexto inicial correto.",
+        "new_retrieved_criteria": [],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [],
+        "final_context_criteria": [
+          "FULL"
+        ]
+      },
+      "self_rag": {
+        "effect": "no_gain",
+        "note": "Validação preserva Fusion 360 sem revisão.",
+        "new_retrieved_criteria": [],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [],
+        "final_context_criteria": [
+          "FULL"
+        ]
+      }
+    },
+    {
+      "question_id": "Q06",
+      "initial_criteria": [
+        "ABSENT",
+        "ABSENT"
+      ],
+      "scenario_issue": "",
+      "unrequested_needs": [
+        3,
+        4
+      ],
+      "redundant_needs": [
+        5
+      ],
+      "omitted_requested_aspects": "",
+      "adaptive": {
+        "effect": "mixed",
+        "note": "Encontra correção de sinal; entrega esse fato, mas afirma também que código foi corrigido por posicionamento de molduras.",
+        "new_retrieved_criteria": [
+          1,
+          2
+        ],
+        "new_delivered_criteria": [
+          2
+        ],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [
+          {
+            "criterion": 1,
+            "doc_id": "DOC02",
+            "page": 33,
+            "source_id": "DOC02:P0033:W0001-0002",
+            "quote": "O par de engrenagens utilizado para transmitir o movimento"
+          },
+          {
+            "criterion": 2,
+            "doc_id": "DOC02",
+            "page": 33,
+            "source_id": "DOC02:P0033:W0001-0002",
+            "quote": "A correção foi simples e direta: inverter o sinal"
+          }
+        ],
+        "final_context_criteria": [
+          "PARTIAL",
+          "FULL"
+        ]
+      },
+      "self_rag": {
+        "effect": "mixed",
+        "note": "Recupera inversão mecânica e compensação; corrige sinal, mas recusa causa mesmo com fonte correta disponível e preserva item genérico inadequado.",
+        "new_retrieved_criteria": [
+          1,
+          2
+        ],
+        "new_delivered_criteria": [
+          1,
+          2
+        ],
+        "own_draft_benefit": true,
+        "own_draft_regression": false,
+        "witnesses": [
+          {
+            "criterion": 1,
+            "doc_id": "DOC02",
+            "page": 33,
+            "source_id": "DOC02:P0033:W0001-0002",
+            "quote": "O par de engrenagens utilizado para transmitir o movimento"
+          },
+          {
+            "criterion": 2,
+            "doc_id": "DOC02",
+            "page": 33,
+            "source_id": "DOC02:P0033:W0001-0002",
+            "quote": "A correção foi simples e direta: inverter o sinal"
+          }
+        ],
+        "final_context_criteria": [
+          "FULL",
+          "FULL"
+        ]
+      }
+    },
+    {
+      "question_id": "Q07",
+      "initial_criteria": [
+        "FULL",
+        "FULL",
+        "FULL"
+      ],
+      "scenario_issue": "",
+      "unrequested_needs": [
+        5
+      ],
+      "redundant_needs": [],
+      "omitted_requested_aspects": "",
+      "adaptive": {
+        "effect": "benefit",
+        "note": "Seleção/decomposição explicita nylon que baseline omite; nenhuma busca adicional. Benefício de cobertura, sem ablação que isole seleção de planejamento.",
+        "new_retrieved_criteria": [],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [],
+        "final_context_criteria": [
+          "FULL",
+          "FULL",
+          "FULL"
+        ]
+      },
+      "self_rag": {
+        "effect": "benefit",
+        "note": "Completa reparo com origem no servo reserva e preserva nylon. Apoio parcial do rascunho foi confundido com falta de apoio; recusa também descrição não pedida.",
+        "new_retrieved_criteria": [],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": true,
+        "own_draft_regression": false,
+        "witnesses": [],
+        "final_context_criteria": [
+          "FULL",
+          "FULL",
+          "FULL"
+        ]
+      }
+    },
+    {
+      "question_id": "Q08",
+      "initial_criteria": [
+        "NA",
+        "NA"
+      ],
+      "scenario_issue": "O chunk inicial da página 34 termina antes da discussão térmica; página 37 trata continuidade e apêndice. A limitação térmica explícita está nas páginas 34/36 completas.",
+      "unrequested_needs": [],
+      "redundant_needs": [],
+      "omitted_requested_aspects": "",
+      "adaptive": {
+        "effect": "regression",
+        "note": "Busca recupera discussão térmica futura, mas ela não chega ao contexto final; resposta inventa 41/35.",
+        "new_retrieved_criteria": [
+          1
+        ],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [
+          {
+            "criterion": 1,
+            "doc_id": "DOC02",
+            "page": 34,
+            "source_id": "DOC02:P0034:W0001-0003",
+            "quote": "permanecem como questões em aberto para investigações futuras"
+          }
+        ],
+        "final_context_criteria": [
+          "NA",
+          "NA"
+        ]
+      },
+      "self_rag": {
+        "effect": "benefit",
+        "note": "Detecta valores 41/35 sem apoio e os elimina; baseline já recusava. Busca traz discussão de ensaio futuro, descartada na seleção.",
+        "new_retrieved_criteria": [
+          1
+        ],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": true,
+        "own_draft_regression": false,
+        "witnesses": [
+          {
+            "criterion": 1,
+            "doc_id": "DOC02",
+            "page": 34,
+            "source_id": "DOC02:P0034:W0001-0003",
+            "quote": "permanecem como questões em aberto para investigações futuras"
+          }
+        ],
+        "final_context_criteria": [
+          "NA",
+          "NA"
+        ]
+      }
+    },
+    {
+      "question_id": "Q09",
+      "initial_criteria": [
+        "FULL"
+      ],
+      "scenario_issue": "",
+      "unrequested_needs": [],
+      "redundant_needs": [],
+      "omitted_requested_aspects": "",
+      "adaptive": {
+        "effect": "regression",
+        "note": "Substitui Streamlit do pacote inicial por ADK recuperado na mesma página, trocando a camada da arquitetura.",
+        "new_retrieved_criteria": [],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [],
+        "final_context_criteria": [
+          "ABSENT"
+        ]
+      },
+      "self_rag": {
+        "effect": "no_gain",
+        "note": "Validação preserva Streamlit sem revisão.",
+        "new_retrieved_criteria": [],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [],
+        "final_context_criteria": [
+          "FULL"
+        ]
+      }
+    },
+    {
+      "question_id": "Q10",
+      "initial_criteria": [
+        "FULL",
+        "ABSENT"
+      ],
+      "scenario_issue": "",
+      "unrequested_needs": [],
+      "redundant_needs": [
+        3,
+        4,
+        5
+      ],
+      "omitted_requested_aspects": "",
+      "adaptive": {
+        "effect": "mixed",
+        "note": "Encontra registro e URLs em p.31 e entrega evidência; geração resume sem /agents e sem alcançabilidade explícita, perdendo detalhes do papel.",
+        "new_retrieved_criteria": [
+          2
+        ],
+        "new_delivered_criteria": [
+          2
+        ],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [
+          {
+            "criterion": 2,
+            "doc_id": "DOC03",
+            "page": 31,
+            "source_id": "DOC03:P0031:W0001-0003",
+            "quote": "as URLs registradas foram consideradas alcançáveis"
+          }
+        ],
+        "final_context_criteria": [
+          "FULL",
+          "PARTIAL"
+        ]
+      },
+      "self_rag": {
+        "effect": "mixed",
+        "note": "Entrega evidência de URLs, mas mantém declaração de que detalhes não estão documentados e mistura teste REST com localização de especialistas.",
+        "new_retrieved_criteria": [
+          2
+        ],
+        "new_delivered_criteria": [
+          2
+        ],
+        "own_draft_benefit": true,
+        "own_draft_regression": false,
+        "witnesses": [
+          {
+            "criterion": 2,
+            "doc_id": "DOC03",
+            "page": 31,
+            "source_id": "DOC03:P0031:W0001-0003",
+            "quote": "as URLs registradas foram consideradas alcançáveis"
+          }
+        ],
+        "final_context_criteria": [
+          "FULL",
+          "PARTIAL"
+        ]
+      }
+    },
+    {
+      "question_id": "Q11",
+      "initial_criteria": [
+        "PARTIAL",
+        "ABSENT"
+      ],
+      "scenario_issue": "O chunk P0041:C0003 não contém a causa da falha; critério de todas as asserções está na p.29. O cenário mistura distrator e evidência ausente. O gabarito também transforma \"não necessariamente falha arquitetural\" em negação categórica.",
+      "unrequested_needs": [
+        3,
+        4
+      ],
+      "redundant_needs": [
+        5
+      ],
+      "omitted_requested_aspects": "",
+      "adaptive": {
+        "effect": "no_gain",
+        "note": "Busca contém indisponibilidade temporária, mas seletor entrega apenas categorias da tabela.",
+        "new_retrieved_criteria": [
+          2
+        ],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [
+          {
+            "criterion": 2,
+            "doc_id": "DOC03",
+            "page": 41,
+            "source_id": "DOC03:P0041:W0001-0002",
+            "quote": "delo de IA estava temporariamente indisponível"
+          }
+        ],
+        "final_context_criteria": [
+          "PARTIAL",
+          "ABSENT"
+        ]
+      },
+      "self_rag": {
+        "effect": "no_gain",
+        "note": "Sinaliza atribuições inadequadas, mas descarta causa correta recuperada e aprova uma nova causa falsa sobre campos de tempo.",
+        "new_retrieved_criteria": [
+          2
+        ],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [
+          {
+            "criterion": 2,
+            "doc_id": "DOC03",
+            "page": 41,
+            "source_id": "DOC03:P0041:W0001-0002",
+            "quote": "delo de IA estava temporariamente indisponível"
+          }
+        ],
+        "final_context_criteria": [
+          "PARTIAL",
+          "ABSENT"
+        ]
+      }
+    },
+    {
+      "question_id": "Q12",
+      "initial_criteria": [
+        "NA",
+        "NA"
+      ],
+      "scenario_issue": "",
+      "unrequested_needs": [],
+      "redundant_needs": [],
+      "omitted_requested_aspects": "",
+      "adaptive": {
+        "effect": "no_gain",
+        "note": "Busca sem informação adicional relevante; fallback mantém recusa.",
+        "new_retrieved_criteria": [],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [],
+        "final_context_criteria": [
+          "NA",
+          "NA"
+        ]
+      },
+      "self_rag": {
+        "effect": "no_gain",
+        "note": "Não há nova evidência; recusa válida vira recusa genérica, sem benefício.",
+        "new_retrieved_criteria": [],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [],
+        "final_context_criteria": [
+          "NA",
+          "NA"
+        ]
+      }
+    },
+    {
+      "question_id": "Q13",
+      "initial_criteria": [
+        "FULL"
+      ],
+      "scenario_issue": "",
+      "unrequested_needs": [
+        1
+      ],
+      "redundant_needs": [],
+      "omitted_requested_aspects": "",
+      "adaptive": {
+        "effect": "no_gain",
+        "note": "Mantém terminate, mas faz busca para descrição de agente não solicitada.",
+        "new_retrieved_criteria": [],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [],
+        "final_context_criteria": [
+          "FULL"
+        ]
+      },
+      "self_rag": {
+        "effect": "no_gain",
+        "note": "Preserva terminate. Toda a revisão trata de uma descrição não solicitada.",
+        "new_retrieved_criteria": [],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [],
+        "final_context_criteria": [
+          "FULL"
+        ]
+      }
+    },
+    {
+      "question_id": "Q14",
+      "initial_criteria": [
+        "PARTIAL",
+        "ABSENT",
+        "ABSENT"
+      ],
+      "scenario_issue": "Chunk inicial começa depois do cabeçalho da tabela. As taxas do OSWorld estão na p.60; a referência da rubrica aponta p.61. Cenário é incompletude com tabela truncada.",
+      "unrequested_needs": [
+        5
+      ],
+      "redundant_needs": [
+        3,
+        4
+      ],
+      "omitted_requested_aspects": "",
+      "adaptive": {
+        "effect": "mixed",
+        "note": "Recupera taxas do OSWorld, trajetórias e cabeçalho da tabela; entrega apenas cabeçalho/ScreenSpot, que gerador ainda interpreta incorretamente.",
+        "new_retrieved_criteria": [
+          1,
+          2,
+          3
+        ],
+        "new_delivered_criteria": [
+          1
+        ],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [
+          {
+            "criterion": 1,
+            "doc_id": "DOC04",
+            "page": 59,
+            "source_id": "DOC04:P0059:W0001-0003",
+            "quote": "Modelo Texto (%) Ícone (%) Geral (%)"
+          },
+          {
+            "criterion": 2,
+            "doc_id": "DOC04",
+            "page": 60,
+            "source_id": "DOC04:P0060:W0001-0003",
+            "quote": "O modelo treinado obteve 11,31% de sucesso agregado"
+          },
+          {
+            "criterion": 3,
+            "doc_id": "DOC04",
+            "page": 61,
+            "source_id": "DOC04:P0061:W0001-0002",
+            "quote": "reabrindo menus e reaplicando operações"
+          }
+        ],
+        "final_context_criteria": [
+          "FULL",
+          "ABSENT",
+          "ABSENT"
+        ]
+      },
+      "self_rag": {
+        "effect": "mixed",
+        "note": "Encontra fontes ausentes e corrige valores do ScreenSpot em item adicional, mas aprova transferência falsa dessas taxas para OSWorld.",
+        "new_retrieved_criteria": [
+          1,
+          2,
+          3
+        ],
+        "new_delivered_criteria": [
+          1
+        ],
+        "own_draft_benefit": true,
+        "own_draft_regression": false,
+        "witnesses": [
+          {
+            "criterion": 1,
+            "doc_id": "DOC04",
+            "page": 59,
+            "source_id": "DOC04:P0059:W0001-0003",
+            "quote": "Modelo Texto (%) Ícone (%) Geral (%)"
+          },
+          {
+            "criterion": 2,
+            "doc_id": "DOC04",
+            "page": 60,
+            "source_id": "DOC04:P0060:W0001-0002",
+            "quote": "O modelo treinado obteve 11,31% de sucesso agregado"
+          },
+          {
+            "criterion": 3,
+            "doc_id": "DOC04",
+            "page": 61,
+            "source_id": "DOC04:P0061:W0001-0002",
+            "quote": "reabrindo menus e reaplicando operações"
+          }
+        ],
+        "final_context_criteria": [
+          "FULL",
+          "ABSENT",
+          "ABSENT"
+        ]
+      }
+    },
+    {
+      "question_id": "Q15",
+      "initial_criteria": [
+        "FULL",
+        "FULL"
+      ],
+      "scenario_issue": "",
+      "unrequested_needs": [
+        3,
+        4,
+        5
+      ],
+      "redundant_needs": [],
+      "omitted_requested_aspects": "Plano omite por que a proporção aumenta no preliminar.",
+      "adaptive": {
+        "effect": "regression",
+        "note": "Plano conserva percentuais, perde a pergunta causal e inventa necessidades sobre idade; evidência da exclusão está disponível, mas não é usada.",
+        "new_retrieved_criteria": [],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [],
+        "final_context_criteria": [
+          "FULL",
+          "FULL"
+        ]
+      },
+      "self_rag": {
+        "effect": "no_gain",
+        "note": "Mantém percentuais e trabalha só em itens extras; a razão pedida foi omitida pelo plano.",
+        "new_retrieved_criteria": [],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [],
+        "final_context_criteria": [
+          "FULL",
+          "FULL"
+        ]
+      }
+    },
+    {
+      "question_id": "Q16",
+      "initial_criteria": [
+        "NA",
+        "NA"
+      ],
+      "scenario_issue": "P0066:C0002 discute ausência de réplicas e variância, não contém a passagem explícita de nove fatores/ausência de isolamento que está na p.65.",
+      "unrequested_needs": [],
+      "redundant_needs": [],
+      "omitted_requested_aspects": "",
+      "adaptive": {
+        "effect": "no_gain",
+        "note": "Recupera limitação causal explícita, mas não a entrega: mantém pacote sem o trecho de nove fatores.",
+        "new_retrieved_criteria": [
+          2
+        ],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [
+          {
+            "criterion": 2,
+            "doc_id": "DOC04",
+            "page": 65,
+            "source_id": "DOC04:P0065:W0002-0003",
+            "quote": "O experimento difere simultaneamente em nove fatores"
+          }
+        ],
+        "final_context_criteria": [
+          "NA",
+          "NA"
+        ]
+      },
+      "self_rag": {
+        "effect": "no_gain",
+        "note": "Busca encontra ausência de isolamento, mas seleção descarta o trecho; revisão apenas repete recusas.",
+        "new_retrieved_criteria": [
+          2
+        ],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [
+          {
+            "criterion": 2,
+            "doc_id": "DOC04",
+            "page": 65,
+            "source_id": "DOC04:P0065:W0002-0003",
+            "quote": "O experimento difere simultaneamente em nove fatores"
+          }
+        ],
+        "final_context_criteria": [
+          "NA",
+          "NA"
+        ]
+      }
+    },
+    {
+      "question_id": "Q17",
+      "initial_criteria": [
+        "ABSENT"
+      ],
+      "scenario_issue": "Rotulada direta, mas o chunk inicial não contém macros. Extração cola a conjunção e a pascal_stop, produzindo epascal_stop. Ganho de busca não equivale a identificação literal correta.",
+      "unrequested_needs": [
+        1
+      ],
+      "redundant_needs": [],
+      "omitted_requested_aspects": "",
+      "adaptive": {
+        "effect": "mixed",
+        "note": "Recupera macros que faltavam no caso erroneamente direto; artefato epascal_stop impede acerto literal.",
+        "new_retrieved_criteria": [
+          1
+        ],
+        "new_delivered_criteria": [
+          1
+        ],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [
+          {
+            "criterion": 1,
+            "doc_id": "DOC05",
+            "page": 34,
+            "source_id": "DOC05:P0034:W0001-0002",
+            "quote": "Na abordagem manual, o usuário insere macros específicas"
+          }
+        ],
+        "final_context_criteria": [
+          "PARTIAL"
+        ]
+      },
+      "self_rag": {
+        "effect": "mixed",
+        "note": "Obtém macros ausentes e as inclui, conservando artefato de extração no nome final.",
+        "new_retrieved_criteria": [
+          1
+        ],
+        "new_delivered_criteria": [
+          1
+        ],
+        "own_draft_benefit": true,
+        "own_draft_regression": false,
+        "witnesses": [
+          {
+            "criterion": 1,
+            "doc_id": "DOC05",
+            "page": 34,
+            "source_id": "DOC05:P0034:W0001-0002",
+            "quote": "Na abordagem manual, o usuário insere macros específicas"
+          }
+        ],
+        "final_context_criteria": [
+          "PARTIAL"
+        ]
+      }
+    },
+    {
+      "question_id": "Q18",
+      "initial_criteria": [
+        "FULL",
+        "ABSENT"
+      ],
+      "scenario_issue": "",
+      "unrequested_needs": [],
+      "redundant_needs": [
+        4,
+        5
+      ],
+      "omitted_requested_aspects": "",
+      "adaptive": {
+        "effect": "mixed",
+        "note": "Entrega proposta tasking que estava ausente; ganho factual coexistindo com descrição de single sem apoio.",
+        "new_retrieved_criteria": [
+          2
+        ],
+        "new_delivered_criteria": [
+          2
+        ],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [
+          {
+            "criterion": 2,
+            "doc_id": "DOC05",
+            "page": 47,
+            "source_id": "DOC05:P0047:W0001-0002",
+            "quote": "fazendo uso do modelo de tarefas (tasking) do OpenMP"
+          }
+        ],
+        "final_context_criteria": [
+          "FULL",
+          "FULL"
+        ]
+      },
+      "self_rag": {
+        "effect": "mixed",
+        "note": "Entrega tasking no contexto, mas não revisa a estratégia falsa já aprovada. Remove descrições de loop sem apoio e melhora explicação do swap.",
+        "new_retrieved_criteria": [
+          2
+        ],
+        "new_delivered_criteria": [
+          2
+        ],
+        "own_draft_benefit": true,
+        "own_draft_regression": false,
+        "witnesses": [
+          {
+            "criterion": 2,
+            "doc_id": "DOC05",
+            "page": 47,
+            "source_id": "DOC05:P0047:W0001-0002",
+            "quote": "fazendo uso do modelo de tarefas (tasking) do OpenMP"
+          }
+        ],
+        "final_context_criteria": [
+          "FULL",
+          "FULL"
+        ]
+      }
+    },
+    {
+      "question_id": "Q19",
+      "initial_criteria": [
+        "FULL",
+        "FULL",
+        "PARTIAL"
+      ],
+      "scenario_issue": "A sentença que explica automação pelo PaScal Analyzer é cortada no fim de P0037:C0001.",
+      "unrequested_needs": [
+        3,
+        4,
+        5
+      ],
+      "redundant_needs": [],
+      "omitted_requested_aspects": "",
+      "adaptive": {
+        "effect": "regression",
+        "note": "Recupera explicação completa de automação, mas fallback ao pacote inicial não a entrega; resposta piora a interpretação da referência.",
+        "new_retrieved_criteria": [
+          3
+        ],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [
+          {
+            "criterion": 3,
+            "doc_id": "DOC05",
+            "page": 37,
+            "source_id": "DOC05:P0037:W0001-0002",
+            "quote": "viabilizar a automação dos experimentos por meio do PaScal Analyzer"
+          }
+        ],
+        "final_context_criteria": [
+          "FULL",
+          "FULL",
+          "PARTIAL"
+        ]
+      },
+      "self_rag": {
+        "effect": "no_gain",
+        "note": "Encontra motivo de automação, mas não o entrega; falso apoio inicial protege ressalva mal formulada e rejeita correção parcial.",
+        "new_retrieved_criteria": [
+          3
+        ],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [
+          {
+            "criterion": 3,
+            "doc_id": "DOC05",
+            "page": 37,
+            "source_id": "DOC05:P0037:W0001-0003",
+            "quote": "viabilizar a automação dos experimentos por meio do PaScal Analyzer"
+          }
+        ],
+        "final_context_criteria": [
+          "FULL",
+          "FULL",
+          "PARTIAL"
+        ]
+      }
+    },
+    {
+      "question_id": "Q20",
+      "initial_criteria": [
+        "NA",
+        "NA"
+      ],
+      "scenario_issue": "",
+      "unrequested_needs": [],
+      "redundant_needs": [],
+      "omitted_requested_aspects": "",
+      "adaptive": {
+        "effect": "no_gain",
+        "note": "Realiza busca apesar de o caráter futuro já estar explícito; não melhora justificativa da recusa.",
+        "new_retrieved_criteria": [],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [],
+        "final_context_criteria": [
+          "NA",
+          "NA"
+        ]
+      },
+      "self_rag": {
+        "effect": "no_gain",
+        "note": "Marca recusa coerente com trabalho futuro como sem apoio; gera busca e revisão sem benefício.",
+        "new_retrieved_criteria": [],
+        "new_delivered_criteria": [],
+        "own_draft_benefit": false,
+        "own_draft_regression": false,
+        "witnesses": [],
+        "final_context_criteria": [
+          "NA",
+          "NA"
+        ]
+      }
+    }
+  ],
+  "support_judgments": [
+    {
+      "question_id": "Q01",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 1,
+      "check_sha256": "8e5974ae10db37f0e9838e4d13d723daa567b79b6f35f84140f1ec65b951f583",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Preserva TTL correto, sem busca extra."
+    },
+    {
+      "question_id": "Q02",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 1,
+      "check_sha256": "d23bfca1bab28717e45f1cad4691b814f1c9c1aa864c3db6a9a55a0aace3fcaf",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Corrige o motivo da Drive API; conserva autenticação original incompleta em JSON/compartilhamento."
+    },
+    {
+      "question_id": "Q02",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 2,
+      "check_sha256": "e7ee54f14785817b50ffc04f2da436d8f3eeaa2f7c9bde4f3f5197a2051b19d5",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Corrige o motivo da Drive API; conserva autenticação original incompleta em JSON/compartilhamento."
+    },
+    {
+      "question_id": "Q02",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 1,
+      "check_sha256": "a4ab8dafb396d4f748fc0f666e7be4fc7cd3e12f40f16277b33017aab6e16432",
+      "reference_support": "CONTRADICTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Corrige o motivo da Drive API; conserva autenticação original incompleta em JSON/compartilhamento."
+    },
+    {
+      "question_id": "Q02",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 2,
+      "check_sha256": "9d5c35722e0d4147d84d93d1650914abe77c8e4a5180b66240453eb73e776f71",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Corrige o motivo da Drive API; conserva autenticação original incompleta em JSON/compartilhamento."
+    },
+    {
+      "question_id": "Q03",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 1,
+      "check_sha256": "c2dfe0e5d5df33003eee91dddc5963d2688589d4320f686b41fe8166eece1de2",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Corrige duplicatas que removiam datas inválidas; preserva respostas boas, sem explicitar condições do intervalo."
+    },
+    {
+      "question_id": "Q03",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 2,
+      "check_sha256": "53260dd7a9364cce59b136c8c119d07234e9c3dd2e27f15207218e5ae7059bbe",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Corrige duplicatas que removiam datas inválidas; preserva respostas boas, sem explicitar condições do intervalo."
+    },
+    {
+      "question_id": "Q03",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 3,
+      "check_sha256": "3df83d508a0fa200060b6fe6a6e391c9106d3ffe479f4e4acc8661f03b12cc47",
+      "reference_support": "CONTRADICTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Corrige duplicatas que removiam datas inválidas; preserva respostas boas, sem explicitar condições do intervalo."
+    },
+    {
+      "question_id": "Q03",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 4,
+      "check_sha256": "6684738ce8434e373852daff1418dcb042577b290325166e361c38d292a93641",
+      "reference_support": "CONTRADICTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Corrige duplicatas que removiam datas inválidas; preserva respostas boas, sem explicitar condições do intervalo."
+    },
+    {
+      "question_id": "Q03",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 1,
+      "check_sha256": "a712cc782eb003d10467f72ad62253682e92d0f1c0f58640a69ab3080cc0f2cd",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Corrige duplicatas que removiam datas inválidas; preserva respostas boas, sem explicitar condições do intervalo."
+    },
+    {
+      "question_id": "Q03",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 2,
+      "check_sha256": "69ac2963ca1801b4313ea2eb5108eda95fad6df2d1759e2d7a7b75de07b22756",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Corrige duplicatas que removiam datas inválidas; preserva respostas boas, sem explicitar condições do intervalo."
+    },
+    {
+      "question_id": "Q04",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 1,
+      "check_sha256": "4796db294f38f6ef4ec94a9e8281e620aa549472fc026dc60d94de73deb966ad",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Converte recusa adequada em 120 ms; verificador aprova troca de métrica/unidade."
+    },
+    {
+      "question_id": "Q04",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 1,
+      "check_sha256": "a822a465c2a26fce016dd381d6e3132e1575977a532c811fc1eb4e29b172c2a5",
+      "reference_support": "CONTRADICTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Converte recusa adequada em 120 ms; verificador aprova troca de métrica/unidade."
+    },
+    {
+      "question_id": "Q05",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 1,
+      "check_sha256": "70323c39851024ddcd3f939406b670479861f2e86d816f19f5c37e6883372430",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Confirma Fusion 360 sem busca extra."
+    },
+    {
+      "question_id": "Q06",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 1,
+      "check_sha256": "167cecc8bdedae16966617eb5e02b8aa642e4945dda10de3b772faa2e30c7d8f",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Corrige inversão de sinal, mas recusa causa apesar da passagem correta no contexto; mantém uma descrição de substituição mecânica como método de correção."
+    },
+    {
+      "question_id": "Q06",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 2,
+      "check_sha256": "f5edcc1f7644e102ba8a0f3d7c7cc08ef0df9c9980ca72cb288f32ddd30661e2",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Corrige inversão de sinal, mas recusa causa apesar da passagem correta no contexto; mantém uma descrição de substituição mecânica como método de correção."
+    },
+    {
+      "question_id": "Q06",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 3,
+      "check_sha256": "f50a9f5b448bc4d548f09b97683170cfaaffa179c21c43e8ae785b4bb04d5c04",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Corrige inversão de sinal, mas recusa causa apesar da passagem correta no contexto; mantém uma descrição de substituição mecânica como método de correção."
+    },
+    {
+      "question_id": "Q06",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 4,
+      "check_sha256": "4d2ba7b8596402a363b3a1e4aae57bc96b3c3f24d8da8899bdf07ec99469611f",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Corrige inversão de sinal, mas recusa causa apesar da passagem correta no contexto; mantém uma descrição de substituição mecânica como método de correção."
+    },
+    {
+      "question_id": "Q06",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 5,
+      "check_sha256": "486b5ed77e98ff2513440149f08e31cc95137a8920de1098940873f3feaa430f",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q06",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 1,
+      "check_sha256": "d293bd302b3507dac62af604871ec36fc684cdb45a97fc3203d968d498964147",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Corrige inversão de sinal, mas recusa causa apesar da passagem correta no contexto; mantém uma descrição de substituição mecânica como método de correção."
+    },
+    {
+      "question_id": "Q06",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 2,
+      "check_sha256": "12e20797228ac0499216ec26ee4cfa8c0e2ddc143476e2fee51e93980ae2c6d3",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Corrige inversão de sinal, mas recusa causa apesar da passagem correta no contexto; mantém uma descrição de substituição mecânica como método de correção."
+    },
+    {
+      "question_id": "Q06",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 3,
+      "check_sha256": "993c24b883822c03d0664a39d09ff0e9e405a6f419eb7bf56599492c3b8a6103",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Corrige inversão de sinal, mas recusa causa apesar da passagem correta no contexto; mantém uma descrição de substituição mecânica como método de correção."
+    },
+    {
+      "question_id": "Q06",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 4,
+      "check_sha256": "36236f4ec34042460e4d284cf21918e5685eb69f1743967a0e66cea893f3a411",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q07",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 1,
+      "check_sha256": "28da93d6dc7089ddbbed072a10a1da7da2a6ebb8a9f7160c4feb6d9b22c48812",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Inclui nylon/servo reserva; uma recusa a item extra não significa ausência de resposta à pergunta."
+    },
+    {
+      "question_id": "Q07",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 2,
+      "check_sha256": "ca18dfd707715841c2c935bd75008277c4cd267a66a7b569e3db27b6fa04c180",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Inclui nylon/servo reserva; uma recusa a item extra não significa ausência de resposta à pergunta."
+    },
+    {
+      "question_id": "Q07",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 3,
+      "check_sha256": "58aaf9a6eb1c66d3fd9f31e00a7a5ee126b15325b4833f53522e3bd0f1c5d98d",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Inclui nylon/servo reserva; uma recusa a item extra não significa ausência de resposta à pergunta."
+    },
+    {
+      "question_id": "Q07",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 4,
+      "check_sha256": "b65963691adb01964a5bb25c14f41f978972818200eca6534500c7fa7cd7b0ea",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Inclui nylon/servo reserva; uma recusa a item extra não significa ausência de resposta à pergunta."
+    },
+    {
+      "question_id": "Q07",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 5,
+      "check_sha256": "45d8cf4dddd74cb9942bfffeee97c9a717b228b8063536251c4d328a870823f6",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Inclui nylon/servo reserva; uma recusa a item extra não significa ausência de resposta à pergunta."
+    },
+    {
+      "question_id": "Q07",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 1,
+      "check_sha256": "8e490d4bd751084100bd8d9596299959fb2c41c8a6136934726377825211b57b",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Inclui nylon/servo reserva; uma recusa a item extra não significa ausência de resposta à pergunta."
+    },
+    {
+      "question_id": "Q07",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 2,
+      "check_sha256": "ada871af221b4187e4432358fc417ea4b5e8fa518403a701a4f90880056ec2a2",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Inclui nylon/servo reserva; uma recusa a item extra não significa ausência de resposta à pergunta."
+    },
+    {
+      "question_id": "Q08",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 1,
+      "check_sha256": "d05845ef3ae872811b8ffa4c8becfb08c23a6e72307cf2aad7960647f9b32dbb",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Elimina 41/35 do próprio rascunho por falta de apoio; baseline já recusava."
+    },
+    {
+      "question_id": "Q08",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 2,
+      "check_sha256": "f5dad988d3c3a9e8f08900c3138c90a69ca6171e5094bb03ee07fef963ecb69a",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Elimina 41/35 do próprio rascunho por falta de apoio; baseline já recusava."
+    },
+    {
+      "question_id": "Q08",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 1,
+      "check_sha256": "d05845ef3ae872811b8ffa4c8becfb08c23a6e72307cf2aad7960647f9b32dbb",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Elimina 41/35 do próprio rascunho por falta de apoio; baseline já recusava."
+    },
+    {
+      "question_id": "Q08",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 2,
+      "check_sha256": "f5dad988d3c3a9e8f08900c3138c90a69ca6171e5094bb03ee07fef963ecb69a",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Elimina 41/35 do próprio rascunho por falta de apoio; baseline já recusava."
+    },
+    {
+      "question_id": "Q09",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 1,
+      "check_sha256": "c75e5ca7aeeaaaa045bc55b1b179f8b2d71e53b3b3076e3cea1e1cbd7aac0074",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Preserva Streamlit sem busca extra."
+    },
+    {
+      "question_id": "Q10",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 1,
+      "check_sha256": "0df774f3ef52de38aa918352dc184a5e8986489fab03af8b899e2c28fe568607",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Busca p.31, porém mistura validação de URLs com endpoints REST do Calendar e conserva declaração de que detalhes não estão documentados."
+    },
+    {
+      "question_id": "Q10",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 2,
+      "check_sha256": "3affc610227e7a992524f57ee64546524b1697db36c6f02128dd5050dfc54ee6",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Busca p.31, porém mistura validação de URLs com endpoints REST do Calendar e conserva declaração de que detalhes não estão documentados."
+    },
+    {
+      "question_id": "Q10",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 3,
+      "check_sha256": "07b6e8c1a3170e5cd1ec2c049a108706d63fa096aee85d30fbff1a2c30d4b2bf",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Busca p.31, porém mistura validação de URLs com endpoints REST do Calendar e conserva declaração de que detalhes não estão documentados."
+    },
+    {
+      "question_id": "Q10",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 4,
+      "check_sha256": "508649c84c3f8e6110cbfabd93644fc685f47154192a559d1cc6414a1d73340a",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Busca p.31, porém mistura validação de URLs com endpoints REST do Calendar e conserva declaração de que detalhes não estão documentados."
+    },
+    {
+      "question_id": "Q10",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 5,
+      "check_sha256": "4ab54d3a98e2eb1037d69c4c662c883814c4309fdc2f7cc9726c83238ac27bf6",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Busca p.31, porém mistura validação de URLs com endpoints REST do Calendar e conserva declaração de que detalhes não estão documentados."
+    },
+    {
+      "question_id": "Q10",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 1,
+      "check_sha256": "c106acd0a018bb5a47859bb9a186aa8d367ce6699e48e38d77963f9725386d52",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Busca p.31, porém mistura validação de URLs com endpoints REST do Calendar e conserva declaração de que detalhes não estão documentados."
+    },
+    {
+      "question_id": "Q10",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 2,
+      "check_sha256": "cc3bc85047de6dfa1bc6e4c3643beec93dc1c248974b767264242fa60ed77ba2",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Busca p.31, porém mistura validação de URLs com endpoints REST do Calendar e conserva declaração de que detalhes não estão documentados."
+    },
+    {
+      "question_id": "Q10",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 3,
+      "check_sha256": "55c9263ddf128f6061c70118baa1a2b8799a955af283f9fab37e5a6893beed78",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Busca p.31, porém mistura validação de URLs com endpoints REST do Calendar e conserva declaração de que detalhes não estão documentados."
+    },
+    {
+      "question_id": "Q10",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 4,
+      "check_sha256": "fd07decd58c649992353eb9eafdb91b025ec277eaa8434b706e28817532e1909",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Busca p.31, porém mistura validação de URLs com endpoints REST do Calendar e conserva declaração de que detalhes não estão documentados."
+    },
+    {
+      "question_id": "Q10",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 5,
+      "check_sha256": "f6830b72910ad3699a77bec10ff57deb3b5501b8310f53c18b68fba3012566cd",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Busca p.31, porém mistura validação de URLs com endpoints REST do Calendar e conserva declaração de que detalhes não estão documentados."
+    },
+    {
+      "question_id": "Q11",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 1,
+      "check_sha256": "4d4ba20c1180f9bf05c021f8dbb392f3ad782e2e941b98d64d4f61fc9c048890",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Troca uma causa sem apoio por outra (validação de campos de tempo) e a aprova."
+    },
+    {
+      "question_id": "Q11",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 2,
+      "check_sha256": "4b616a99b2d7e7cd246d97c3963d76ba6da75c271d13972aa27111254280a7a3",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Troca uma causa sem apoio por outra (validação de campos de tempo) e a aprova."
+    },
+    {
+      "question_id": "Q11",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 3,
+      "check_sha256": "93be66ae881e6c729f4b8abf9a23a9ad19d7cfa08c1194da46243940fd41561e",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q11",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 4,
+      "check_sha256": "de0a192df0bd2eef1791dd0cf4e17847c516064c8e8765296e9db76cd1e3817d",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q11",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 5,
+      "check_sha256": "d7379cf27e1986094e3f3b117feef237565709595e41e86944bb164f332a017b",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Troca uma causa sem apoio por outra (validação de campos de tempo) e a aprova."
+    },
+    {
+      "question_id": "Q11",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 1,
+      "check_sha256": "790fb2ac2f1c889528ee4504f9e49b5c52b0258980db0caeea0f76e1e9563743",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Troca uma causa sem apoio por outra (validação de campos de tempo) e a aprova."
+    },
+    {
+      "question_id": "Q11",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 2,
+      "check_sha256": "8f8cb400bacb5cb35ca2446c290cfd429bc971e70b7205a6e333b85da22ee57a",
+      "reference_support": "CONTRADICTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Troca uma causa sem apoio por outra (validação de campos de tempo) e a aprova."
+    },
+    {
+      "question_id": "Q11",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 3,
+      "check_sha256": "31197a571028ef0732da42366087bd32c5d6f094a19aba62b57c5192b22e26ae",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q11",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 4,
+      "check_sha256": "bc753218b2917e5f60dc850356c352523aac217ef2fc96ba400ac0381f2ef2b3",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Troca uma causa sem apoio por outra (validação de campos de tempo) e a aprova."
+    },
+    {
+      "question_id": "Q11",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 5,
+      "check_sha256": "0ebfafa948f00ce3060c4ba20166f3b0fae78f918bd2ce10788b0fcf42ee8725",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Troca uma causa sem apoio por outra (validação de campos de tempo) e a aprova."
+    },
+    {
+      "question_id": "Q12",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 1,
+      "check_sha256": "f9bfd90cd32c9bef853cc45d399d8aba0f11c97ff31a78f00f27858bc72e73f0",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Mantém recusa com redação mais genérica, sem ganho sobre baseline."
+    },
+    {
+      "question_id": "Q12",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 1,
+      "check_sha256": "cadfb1b074be83458d6b73fd3ba21032c685f98e0e1c3b96aabc774f8d766fe9",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Mantém recusa com redação mais genérica, sem ganho sobre baseline."
+    },
+    {
+      "question_id": "Q13",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 1,
+      "check_sha256": "c5f2217b927df3fee3bc8408e75d9b79a97fb131d81675d61ec4f745c720ad38",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q13",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 2,
+      "check_sha256": "4b7e2b8a2b6b095a07d8151eb2537f10f7baa6dcf8f42eb1a60511b8720784ea",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Preserva terminate; recusa de descrição extra infla indicador declarado de abstenção."
+    },
+    {
+      "question_id": "Q13",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 1,
+      "check_sha256": "d758054737e126c57e6a0ef9aa20f7ff75e0a8645772d100bbc79cb8455491d2",
+      "reference_support": "NA",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Metarresposta sobre o escopo do pedido; não é uma afirmação documental."
+    },
+    {
+      "question_id": "Q14",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 1,
+      "check_sha256": "bf34502ef37debd5958c7dd8ad666099796f414ac330241ee3cc908e78a3b25f",
+      "reference_support": "CONTRADICTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Corrige valores do ScreenSpot em item adicional, mas repete esses valores falsamente no OSWorld; descarta evidência de terminação."
+    },
+    {
+      "question_id": "Q14",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 2,
+      "check_sha256": "f2ff3798efd8abb079f66a65efc898db52565a5431e6cf64b4b92d5effbb8bac",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Corrige valores do ScreenSpot em item adicional, mas repete esses valores falsamente no OSWorld; descarta evidência de terminação."
+    },
+    {
+      "question_id": "Q14",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 3,
+      "check_sha256": "269e1a1ec6d6387a687ad281acf518955759d81d77e0945e8adc175d0b8e0c5e",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Corrige valores do ScreenSpot em item adicional, mas repete esses valores falsamente no OSWorld; descarta evidência de terminação."
+    },
+    {
+      "question_id": "Q14",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 4,
+      "check_sha256": "309a9372b85af62ae54c459e8727661cd142723bfa2b04ab93881b2330f78342",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Corrige valores do ScreenSpot em item adicional, mas repete esses valores falsamente no OSWorld; descarta evidência de terminação."
+    },
+    {
+      "question_id": "Q14",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 5,
+      "check_sha256": "4421b2e20a11c1b482bed0acba48ff1054f00c80d41ef7259f70d2afa4ef647c",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q14",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 1,
+      "check_sha256": "45e6c52176f53f4b5b048ece09fa78e5a99c982e700ccc0682a06ffe09f4714f",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Corrige valores do ScreenSpot em item adicional, mas repete esses valores falsamente no OSWorld; descarta evidência de terminação."
+    },
+    {
+      "question_id": "Q14",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 2,
+      "check_sha256": "7aab2092de4395746b4dd46b0310bcfde6d602fa6aeb995e0489db22603fb9c6",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Corrige valores do ScreenSpot em item adicional, mas repete esses valores falsamente no OSWorld; descarta evidência de terminação."
+    },
+    {
+      "question_id": "Q14",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 3,
+      "check_sha256": "efaf677f8d7d65a02f1e91d58f3ce3e08a6d9d01558d1a74e2fe3080ccda6e17",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Corrige valores do ScreenSpot em item adicional, mas repete esses valores falsamente no OSWorld; descarta evidência de terminação."
+    },
+    {
+      "question_id": "Q14",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 4,
+      "check_sha256": "7af30018cb98a00404e8c4459d185ebe67a4d85a53ee2ae5e8e4de519506d715",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Corrige valores do ScreenSpot em item adicional, mas repete esses valores falsamente no OSWorld; descarta evidência de terminação."
+    },
+    {
+      "question_id": "Q14",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 5,
+      "check_sha256": "abbaea30c1aab474a310781b2d59e5808593832f59d77a14b9e84df60c364b48",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q15",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 1,
+      "check_sha256": "0d8afdc060ceab049b19236dccbf974d0cf42d01bb261eef5f51357e4841ed83",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Conserva percentuais, mas plano perdeu a razão solicitada; trabalha em itens etários não pedidos."
+    },
+    {
+      "question_id": "Q15",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 2,
+      "check_sha256": "0d63591d51d7c8dd51c9fbc51d87962beb10be60cf10718af1467f0d88726158",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Conserva percentuais, mas plano perdeu a razão solicitada; trabalha em itens etários não pedidos."
+    },
+    {
+      "question_id": "Q15",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 3,
+      "check_sha256": "1ae4784cd3e47ee43353cc2661e811bf2a0a221d32c9a91a305510a2405e9c6a",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q15",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 4,
+      "check_sha256": "5419cb015d8084feb910786c441c759e04cf3e8ae71c943faeb8cdafe51e563d",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q15",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 5,
+      "check_sha256": "5bc64cbb0c80ced9b2c20bbd41f5d6e07cce1f73dce1aef199d9a955213dd8a8",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q15",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 1,
+      "check_sha256": "87a7881a4662a5855ff60c1a88134fb701291da342cc93f5f8f9ff67897d96ee",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q15",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 2,
+      "check_sha256": "cb67cd02e0cb04ef09a16cd21ee514ba5a50823344143ae17edb4da94038b831",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q15",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 3,
+      "check_sha256": "f8b547aea6dc7d6a6408db816c8829ec6cf33cc2a2cc1d881a8998cfac37f439",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Conserva percentuais, mas plano perdeu a razão solicitada; trabalha em itens etários não pedidos."
+    },
+    {
+      "question_id": "Q16",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 1,
+      "check_sha256": "402ad6784c8bbc805faaf076dee6f25908e4c6055b815342c0a37d5fc8dff45b",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q16",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 2,
+      "check_sha256": "ddef2f913a8d8502cdd2fa093cb21af8089b6e4638a6bba2f46ba94665590ab4",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q16",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 3,
+      "check_sha256": "7fea748a8276e77829d5b5b773beffce04554e38170d79377d90d9238311eb45",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q16",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 4,
+      "check_sha256": "b55ccd21b6a9ab381a91feb0714b57e4c6407ec096053e80cfa967afbe4a9e22",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q16",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 5,
+      "check_sha256": "a6e0fb47ce9fee2c38119347f5287e96e03bcfd92928a75cfffb323426709078",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q16",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 1,
+      "check_sha256": "d526fecd3b4d6551c3c25cfafac10fc87cb38ffe2136c14867063a5f698c2f6d",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q16",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 2,
+      "check_sha256": "329e9fc088c2918824d8fb6b3ab8eedff757a71a38d90b6a6ac384e46ecef956",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q16",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 3,
+      "check_sha256": "652d82ae704ecc9374e00e8607823eb89a04a64be55cd9512a3b503e461e20f0",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q16",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 4,
+      "check_sha256": "c10fe7e3ff5100c34f3ee52b8b2c1e03c4e228b6d492cc642290a5c84ca7259b",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q16",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 5,
+      "check_sha256": "1fb886f7d1fa3547ada21dee0fdfee64df4538c1f88e5b12e52ca4651dffb981",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q17",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 1,
+      "check_sha256": "5840323f6188c44f44866a5a273504bc77e88d71282e6add669353b51f394920",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Localiza macros, mas conserva artefato epascal_stop; ganho de busca parcial, sem identificação literal exata."
+    },
+    {
+      "question_id": "Q17",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 2,
+      "check_sha256": "c8ad33aaf62148e3c5660fa7898b4cccfa3390091c9a5aaf2b139b0775ec930b",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q17",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 1,
+      "check_sha256": "9efa7a8c97c601f26bad8dc4c1e378eeec37e37bcd8978cd9e18936545a1cb49",
+      "reference_support": "TEXT_EXTRACTION_ONLY",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. A fonte extraída contém epascal_stop; inspeção do PDF identifica a conjunção e + pascal_stop."
+    },
+    {
+      "question_id": "Q17",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 2,
+      "check_sha256": "4e017d1e6e859edb8b70887447e03acc7d8b9f25901ecf243ddb3169070f7e8f",
+      "reference_support": "TEXT_EXTRACTION_ONLY",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. A fonte extraída contém epascal_stop; inspeção do PDF identifica a conjunção e + pascal_stop."
+    },
+    {
+      "question_id": "Q18",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 1,
+      "check_sha256": "6c14f8de945477410cdc4106b4910a206cd1f9bc38b7f13014aee03b151740bf",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Amplia explicação do swap; mantém proposta genérica de substituir diretivas que o texto não apresenta, apesar de tasking estar no contexto."
+    },
+    {
+      "question_id": "Q18",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 2,
+      "check_sha256": "86f6d2e9f2761e3920c6437be2d2281f619559f73d38c4abedb310419a89e449",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Amplia explicação do swap; mantém proposta genérica de substituir diretivas que o texto não apresenta, apesar de tasking estar no contexto."
+    },
+    {
+      "question_id": "Q18",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 3,
+      "check_sha256": "88af5e6dc73992df814cfbfeb0a43aa6d22979f3f84fab54a6b22049cee82743",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Amplia explicação do swap; mantém proposta genérica de substituir diretivas que o texto não apresenta, apesar de tasking estar no contexto."
+    },
+    {
+      "question_id": "Q18",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 4,
+      "check_sha256": "69184aad4b02844841dee2a4c3c3fba1728d142206423be5dcdb0d86a7ef11d7",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Amplia explicação do swap; mantém proposta genérica de substituir diretivas que o texto não apresenta, apesar de tasking estar no contexto."
+    },
+    {
+      "question_id": "Q18",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 5,
+      "check_sha256": "ff1b2934baa7575245f2dcaf96fd9351c52f114da1b42b45a971e754cab484b9",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Amplia explicação do swap; mantém proposta genérica de substituir diretivas que o texto não apresenta, apesar de tasking estar no contexto."
+    },
+    {
+      "question_id": "Q18",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 1,
+      "check_sha256": "6b946917c35d5d2ceacf9597cc07beb2f7c449e74591eada4ec98511c7691939",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Amplia explicação do swap; mantém proposta genérica de substituir diretivas que o texto não apresenta, apesar de tasking estar no contexto."
+    },
+    {
+      "question_id": "Q18",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 2,
+      "check_sha256": "d3344c0342815f21d7d0fd8f58fbfe42208a1388407a05b19cb83488c03da7d1",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Amplia explicação do swap; mantém proposta genérica de substituir diretivas que o texto não apresenta, apesar de tasking estar no contexto."
+    },
+    {
+      "question_id": "Q18",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 3,
+      "check_sha256": "83a8d185b748224b223e3616f74c1fd0c1c3003bd01dde39460217ca60bb0f94",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Amplia explicação do swap; mantém proposta genérica de substituir diretivas que o texto não apresenta, apesar de tasking estar no contexto."
+    },
+    {
+      "question_id": "Q18",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 4,
+      "check_sha256": "c0481d644bec1d4ac433fe7470c45b9d9a005496bce4fb423cd8aa79c62ed75b",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Amplia explicação do swap; mantém proposta genérica de substituir diretivas que o texto não apresenta, apesar de tasking estar no contexto."
+    },
+    {
+      "question_id": "Q19",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 1,
+      "check_sha256": "0cd2d506aa23bac69a3845d07ccf3446b11a03ac6bfd7b84d73b177ec7668db5",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Falsa aprovação da ressalva ambígua; preserva-a e rejeita candidato que recuperava definição da referência."
+    },
+    {
+      "question_id": "Q19",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 2,
+      "check_sha256": "2150f9f2126c15edddecd1f2d4ec2e97d888d7de2f8f1d2ea4bd0d863124b6f5",
+      "reference_support": "CONTRADICTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Falsa aprovação da ressalva ambígua; preserva-a e rejeita candidato que recuperava definição da referência."
+    },
+    {
+      "question_id": "Q19",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 3,
+      "check_sha256": "28a3babb976dfe1b9ea9c528c62ebcc723bc2f50a3f7f20d91e21aa07a51b5ec",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q19",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 4,
+      "check_sha256": "b930287e0830289af42913941e6998c9135b0b4da2631f46de46d96b68a5dba4",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Falsa aprovação da ressalva ambígua; preserva-a e rejeita candidato que recuperava definição da referência."
+    },
+    {
+      "question_id": "Q19",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 5,
+      "check_sha256": "35193b5a5acaa9e6f11d75f3a3a042fbff0f3a2ae2a405befa9f66620d225faf",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q19",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 1,
+      "check_sha256": "a4b9413af00dc31b67d335af4d8d2175b382b232de9f90c975f1425d41c9e164",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Falsa aprovação da ressalva ambígua; preserva-a e rejeita candidato que recuperava definição da referência."
+    },
+    {
+      "question_id": "Q19",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 2,
+      "check_sha256": "cf74ffdd50480fdd0167e0aacf09a3ee8e19f9ab5bf5a81fe8cfaf3d85d2de10",
+      "reference_support": "UNDETERMINED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Indeterminado: pedido extra/aberto ou ausência documental não demonstrável pelo recorte."
+    },
+    {
+      "question_id": "Q19",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 3,
+      "check_sha256": "b8ad0e6b41f7688887829ac6ec69e317f3ee657c3f4089ead9d3a684e37df73a",
+      "reference_support": "UNSUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Falsa aprovação da ressalva ambígua; preserva-a e rejeita candidato que recuperava definição da referência."
+    },
+    {
+      "question_id": "Q20",
+      "repetition": 1,
+      "check_round": 1,
+      "item_index": 1,
+      "check_sha256": "8656c08a8ef263838a95077cf2a55cea477dc165944b01294bf4402f4e1557ba",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Substitui recusa por genérica; não explicita caráter futuro já presente no contexto."
+    },
+    {
+      "question_id": "Q20",
+      "repetition": 1,
+      "check_round": 2,
+      "item_index": 1,
+      "check_sha256": "dd9f035ce4ab839b5f6cbbc44c0cc3c20d2c5b70bed4d7a625a272c8ba848c2b",
+      "reference_support": "SUPPORTED",
+      "note": "Apoio factual no trecho efetivamente enviado ao crítico, separado da cobertura. Substitui recusa por genérica; não explicita caráter futuro já presente no contexto."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+question_id,revision_mode_observed,revision_targets,generator_calls,items_per_generator_call,llm_calls,latency_seconds
+Q01,no_revision,0,1,[1],5,17.694467667024583
+Q02,joint_revision,2,2,"[2, 2]",16,134.96960812504403
+Q03,joint_revision,2,2,"[4, 2]",20,205.2531799590215
+Q04,single_target_ambiguous,1,2,"[1, 1]",9,47.21165416715667
+Q05,no_revision,0,1,[1],5,21.999942375114188
+Q06,joint_revision,4,2,"[5, 4]",29,170.26642858306877
+Q07,joint_revision,2,2,"[5, 2]",24,197.51083370903507
+Q08,joint_revision,2,2,"[2, 2]",15,91.60399512480944
+Q09,no_revision,0,1,[1],5,18.075673333136365
+Q10,per_item_revision,5,6,"[5, 1, 1, 1, 1, 1]",38,411.2912570000626
+Q11,per_item_revision,5,6,"[5, 1, 1, 1, 1, 1]",35,251.6067493748851
+Q12,single_target_ambiguous,1,2,"[1, 1]",9,68.88439479097724
+Q13,single_target_ambiguous,1,2,"[2, 1]",12,124.85134758404456
+Q14,per_item_revision,5,6,"[5, 1, 1, 1, 1, 1]",35,342.70850220904686
+Q15,per_item_revision,3,4,"[5, 1, 1, 1]",29,170.46257395786233
+Q16,per_item_revision,5,6,"[5, 1, 1, 1, 1, 1]",35,222.19620041595772
+Q17,per_item_revision,2,3,"[2, 1, 1]",16,103.49208579212427
+Q18,per_item_revision,4,5,"[5, 1, 1, 1, 1]",32,297.43843991705216
+Q19,per_item_revision,3,4,"[5, 1, 1, 1]",30,225.92359891696833
+Q20,single_target_ambiguous,1,2,"[1, 1]",9,73.38829033309594

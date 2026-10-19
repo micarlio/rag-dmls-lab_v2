@@ -1,0 +1,59 @@
+TCCs de Engenharia de Computação — UFRN
+Consulta: 17/10/2026
+
+Critério: os cinco trabalhos mais recentes pela data do trabalho (dc.date.issued), em ordem decrescente, na coleção CT - TCC - Engenharia de Computação do Repositório Institucional da UFRN. Trabalhos com a mesma data mantêm a ordem apresentada pelo repositório.
+Coleção: https://repositorio.ufrn.br/handle/123456789/33188
+Observação: a data do trabalho difere da data de inclusão no repositório. A seleção considera os trabalhos disponibilizados nessa coleção na data da consulta.
+PDFs originais, sem alteração de conteúdo. Nomes padronizados com ordem, ano, autor e título; acentos e pontuação foram simplificados para compatibilidade.
+
+01. Desenvolvimento de um Sistema Interativo para Monitoramento e Análise do Fluxo de Materiais Doados na Biblioteca Padre Jaime Diniz utilizando Python e Streamlit
+Autor(a): Gabriel de Oliveira Barreto
+Data registrada no repositório: 2026-07-07
+Inclusão no repositório: 2026-08-14
+Páginas: 55
+Arquivo: 01_2026_Gabriel-de-Oliveira-Barreto_Desenvolvimento-de-um-Sistema-Interativo-para-Monitoramento-e-Analise-do-Fluxo-de-Materiais-Doados-na-Biblioteca-Padre-Jaime-Diniz-utilizando-Python-e-Streamlit.pdf
+Registro: https://repositorio.ufrn.br/handle/123456789/69887
+PDF: https://repositorio.ufrn.br/server/api/core/bitstreams/744bf565-6ed1-4535-96b3-501da28e020d/content
+SHA-256: 322cf232f82575195a699679e82ec9a8608ff6bfdb947d0668a65970dcab09df
+
+02. Sistema de rastreamento solar de dois eixos baseado em arduino aplicado a um protótipo de forno solar artesanal
+Autor(a): Aylton Correia Gomes Dias
+Data registrada no repositório: 2026-07-03
+Inclusão no repositório: 2026-08-20
+Páginas: 55
+Arquivo: 02_2026_Aylton-Correia-Gomes-Dias_Sistema-de-rastreamento-solar-de-dois-eixos-baseado-em-arduino-aplicado-a-um-prototipo-de-forno-solar-artesanal.pdf
+Registro: https://repositorio.ufrn.br/handle/123456789/69978
+PDF: https://repositorio.ufrn.br/server/api/core/bitstreams/c6cee9f8-435f-4148-ab89-aba5f57ea040/content
+SHA-256: 23c231b4815de31558a4f4b966bafe3c6cf96115a51fe15007466266d6726850
+
+03. Sistema Assistivo Multiagente para Gestão de Rotinas: Uma Abordagem Voltada a Pessoas com TDAH
+Autor(a): Quelita Míriam Nunes Ferraz
+Data registrada no repositório: 2026-07-03
+Inclusão no repositório: 2026-08-19
+Páginas: 46
+Arquivo: 03_2026_Quelita-Miriam-Nunes-Ferraz_Sistema-Assistivo-Multiagente-para-Gestao-de-Rotinas-Uma-Abordagem-Voltada-a-Pessoas-com-TDAH.pdf
+Registro: https://repositorio.ufrn.br/handle/123456789/69972
+PDF: https://repositorio.ufrn.br/server/api/core/bitstreams/5eaf55be-8ff1-4ab5-a286-fd43dced21d8/content
+SHA-256: b471cae59fee2f4a5d5eca5f119d150f53871a8cb3bc6d81a8ec37fb722e3834
+
+04. Navegação autônoma local: estudo empírico sobre o ajuste de modelos de linguagem-visão compactos para o uso de interfaces gráficas
+Autor(a): Thiago Fernandes Pinheiro de Medeiros Rodrigues
+Data registrada no repositório: 2026-07-02
+Inclusão no repositório: 2026-07-16
+Páginas: 80
+Arquivo: 04_2026_Thiago-Fernandes-Pinheiro-de-Medeiros-Rodrigues_Navegacao-autonoma-local-estudo-empirico-sobre-o-ajuste-de-modelos-de-linguagem-visao-compactos-para-o-uso-de-interfaces-graficas.pdf
+Registro: https://repositorio.ufrn.br/handle/123456789/69002
+PDF: https://repositorio.ufrn.br/server/api/core/bitstreams/37f06a0c-3fd6-4720-83ac-22d886889ad4/content
+SHA-256: f8b74a542ae89c0d682aa21a10fa7b26026eea7ca272d0741e2b43ee3ef4a1c9
+
+05. Análise de escalabilidade de um algoritmo de migração reversa no tempo
+Autor(a): Júlia Alanne Silvino dos Santos
+Data registrada no repositório: 2026-06-30
+Inclusão no repositório: 2026-10-06
+Páginas: 50
+Arquivo: 05_2026_Julia-Alanne-Silvino-dos-Santos_Analise-de-escalabilidade-de-um-algoritmo-de-migracao-reversa-no-tempo.pdf
+Registro: https://repositorio.ufrn.br/handle/123456789/70962
+PDF: https://repositorio.ufrn.br/server/api/core/bitstreams/f7058523-8701-4c23-9aa8-4c52a6c07109/content
+SHA-256: 78223238f96f173025e8ca7edf9a22201718ac30c2447c1fba55c28eeb055d3e
+
+Nota sobre datas: as datas usadas na seleção são as dos metadados do repositório. A capa do trabalho de Quelita Míriam Nunes Ferraz informa 10/07/2026, enquanto o registro informa 03/07/2026. A capa do trabalho de Júlia Alanne Silvino dos Santos informa 06/07/2026, enquanto o registro informa 30/06/2026. Os PDFs foram preservados integralmente.

@@ -1,0 +1,5 @@
+variant,n,correct,accuracy,answerable_correct,answerable_n,unanswerable_correct,unanswerable_n,criteria_met_fraction_mean,responses_with_material_error,answerable_full_abstentions,answerable_partial_abstentions,llm_calls_total,llm_calls_mean,latency_mean_seconds
+adaptive,20,4,0.2,3,15,1,5,0.3583333333333333,12,0,4,141,7.05,70.19454308117274
+baseline,20,8,0.4,5,15,3,5,0.5499999999999999,5,0,3,20,1.0,13.03846551462775
+pure_llm,20,2,0.1,0,15,2,5,0.125,8,4,0,20,1.0,5.116284258279483
+self_rag,20,7,0.35,5,15,2,5,0.5666666666666667,8,0,4,408,20.4,159.8414611667744

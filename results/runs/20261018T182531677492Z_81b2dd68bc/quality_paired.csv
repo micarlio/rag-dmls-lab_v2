@@ -1,0 +1,41 @@
+question_id,repetition,variant,outcome,criteria_met_delta,material_error_removed,llm_calls_delta,latency_delta_seconds,baseline_note,control_note
+Q01,1,adaptive,regressed,-1,False,3,29.50806583277881,TTL correto.,Substitui TTL de 120 segundos por 24 horas; seletor elimina a sentença decisiva.
+Q02,1,adaptive,tied_incorrect,0,False,4,67.96935833385214,Conta de serviço parcial; confunde Drive API com compartilhamento.,"Autenticação ganha detalhes, mas motivo da Drive API continua incorreto."
+Q03,1,adaptive,tied_incorrect,-1,False,8,138.95701212482527,"Limpeza correta; conserva último estado, mas omite condições precisas de intervalo inválido.","Perde errors=coerce e manutenção do estado; resposta de interceptação é sustentada na p.48, porém incompleta."
+Q04,1,adaptive,regressed,-2,False,3,25.1900410822127,Recusa sem inventar valor.,Confunde TTL de cache com mediana de latência.
+Q05,1,adaptive,tied_correct,0,False,3,28.072063292143866,Identifica Fusion 360.,Mantém Fusion 360 por fallback ao contexto inicial após seleção missing.
+Q06,1,adaptive,tied_incorrect,1,False,9,93.42669687513262,Confunde mudança mecânica com correção do algoritmo.,"Recupera inversão de sinal, mas também atribui código a ajuste físico de molduras e não identifica inversão de rotação."
+Q07,1,adaptive,improved,1,False,6,56.72574674966745,"Acerta inadequação e reparo, omite nylon.",Inclui nylon e servo reserva; recusa item extra de descrição do forno que não foi pedido.
+Q08,1,adaptive,regressed,-2,False,5,34.175000415649265,Recusa temperaturas não medidas.,Inventa temperaturas 41/35.
+Q09,1,adaptive,regressed,-1,False,3,17.908405791968107,Identifica Streamlit.,Troca camada de apresentação por framework de agentes ADK.
+Q10,1,adaptive,tied_incorrect,0,False,9,125.54955570888706,Papel parcial; recusa detalhes de testes ausentes no pacote.,Busca p.31 e produz resumo de registro/localização; omite /agents e URLs alcançáveis e parte do papel.
+Q11,1,adaptive,tied_incorrect,0,False,9,68.01417041593231,"Critério parcial e causa errada, tirada da discussão de engajamento.","Lista categorias em vez de critério e declara que causa não está documentada, embora a busca a tenha recuperado."
+Q12,1,adaptive,tied_correct,0,False,3,14.641913375118747,"Recusa corretamente, sem taxa inventada.",Conserva recusa.
+Q13,1,adaptive,tied_correct,0,False,4,24.890931999776512,Identifica terminate.,Identifica terminate; metaitem adicional não solicitado.
+Q14,1,adaptive,tied_incorrect,0,False,9,69.45815362478606,Confunde Texto/Ícone com taxas gerais de dois benchmarks.,Mantém confusão mesmo após cabeçalho correto recuperado; descarta OSWorld e trajetórias.
+Q15,1,adaptive,regressed,-1,False,8,54.736154542071745,Percentuais e exclusão de ancoramento corretos.,"Conserva percentuais, omite razão solicitada e atribui contraste preliminar a método principal."
+Q16,1,adaptive,tied_incorrect,0,False,9,83.21439683297649,Não inventa valor; omite explicação de fatores simultâneos/ausência de ablação.,Recusa valores de cinco subpedidos; não explica impossibilidade de isolamento.
+Q17,1,adaptive,tied_incorrect,0,False,5,33.047630375716835,Responde com ID de chunk em vez de macros.,"Localiza macros, mas copia epascal_stop produzido pela extração e inclui IDs no texto."
+Q18,1,adaptive,tied_incorrect,1,False,9,91.12095908308402,Informa barreiras; omite serialização explícita e nega proposta de estratégia.,"Encontra tasking, mas descrição adicional de single/confllitos não está sustentada e falta explicitar serialização."
+Q19,1,adaptive,tied_incorrect,-1,False,9,62.75845929211937,Fórmula e referência com overhead corretas; omite motivo de automação.,"Fórmula correta; compara o tempo da referência de uma thread consigo mesmo, trocando sujeito da fonte; omite automação."
+Q20,1,adaptive,tied_incorrect,0,False,3,23.756835582200438,Recusa valor; não explica que tasking é futuro.,Recusa valor; não explica que tasking é futuro.
+Q01,1,self_rag,tied_correct,0,False,4,9.40253970795311,TTL correto.,"Preserva TTL correto, sem busca extra."
+Q02,1,self_rag,tied_incorrect,1,True,15,121.77522312500514,Conta de serviço parcial; confunde Drive API com compartilhamento.,Corrige o motivo da Drive API; conserva autenticação original incompleta em JSON/compartilhamento.
+Q03,1,self_rag,tied_incorrect,0,False,19,190.85192783386447,"Limpeza correta; conserva último estado, mas omite condições precisas de intervalo inválido.","Corrige duplicatas que removiam datas inválidas; preserva respostas boas, sem explicitar condições do intervalo."
+Q04,1,self_rag,regressed,-2,False,8,38.72782095824368,Recusa sem inventar valor.,Converte recusa adequada em 120 ms; verificador aprova troca de métrica/unidade.
+Q05,1,self_rag,tied_correct,0,False,4,14.597217167261988,Identifica Fusion 360.,Confirma Fusion 360 sem busca extra.
+Q06,1,self_rag,tied_incorrect,1,False,28,154.0584894581698,Confunde mudança mecânica com correção do algoritmo.,"Corrige inversão de sinal, mas recusa causa apesar da passagem correta no contexto; mantém uma descrição de substituição mecânica como método de correção."
+Q07,1,self_rag,improved,1,False,23,178.02586333383806,"Acerta inadequação e reparo, omite nylon.",Inclui nylon/servo reserva; uma recusa a item extra não significa ausência de resposta à pergunta.
+Q08,1,self_rag,tied_correct,0,False,14,81.23152620764449,Recusa temperaturas não medidas.,Elimina 41/35 do próprio rascunho por falta de apoio; baseline já recusava.
+Q09,1,self_rag,tied_correct,0,False,4,10.306135500082746,Identifica Streamlit.,Preserva Streamlit sem busca extra.
+Q10,1,self_rag,tied_incorrect,0,False,37,393.56415695906617,Papel parcial; recusa detalhes de testes ausentes no pacote.,"Busca p.31, porém mistura validação de URLs com endpoints REST do Calendar e conserva declaração de que detalhes não estão documentados."
+Q11,1,self_rag,tied_incorrect,0,False,34,236.24677408277057,"Critério parcial e causa errada, tirada da discussão de engajamento.",Troca uma causa sem apoio por outra (validação de campos de tempo) e a aprova.
+Q12,1,self_rag,tied_correct,0,False,8,58.180162124102935,"Recusa corretamente, sem taxa inventada.","Mantém recusa com redação mais genérica, sem ganho sobre baseline."
+Q13,1,self_rag,tied_correct,0,False,11,115.15632520895451,Identifica terminate.,Preserva terminate; recusa de descrição extra infla indicador declarado de abstenção.
+Q14,1,self_rag,tied_incorrect,1,False,34,321.9536331258714,Confunde Texto/Ícone com taxas gerais de dois benchmarks.,"Corrige valores do ScreenSpot em item adicional, mas repete esses valores falsamente no OSWorld; descarta evidência de terminação."
+Q15,1,self_rag,regressed,-1,False,28,153.8337200828828,Percentuais e exclusão de ancoramento corretos.,"Conserva percentuais, mas plano perdeu a razão solicitada; trabalha em itens etários não pedidos."
+Q16,1,self_rag,tied_incorrect,0,False,34,211.8382382488344,Não inventa valor; omite explicação de fatores simultâneos/ausência de ablação.,Recusa sem explicar ausência de ablação e fatores simultâneos.
+Q17,1,self_rag,tied_incorrect,0,False,15,93.258855500957,Responde com ID de chunk em vez de macros.,"Localiza macros, mas conserva artefato epascal_stop; ganho de busca parcial, sem identificação literal exata."
+Q18,1,self_rag,tied_incorrect,1,False,31,282.16474216710776,Informa barreiras; omite serialização explícita e nega proposta de estratégia.,"Amplia explicação do swap; mantém proposta genérica de substituir diretivas que o texto não apresenta, apesar de tasking estar no contexto."
+Q19,1,self_rag,tied_incorrect,-1,False,29,206.73080637608655,Fórmula e referência com overhead corretas; omite motivo de automação.,Falsa aprovação da ressalva ambígua; preserva-a e rejeita candidato que recuperava definição da referência.
+Q20,1,self_rag,tied_incorrect,0,False,8,64.15575587423518,Recusa valor; não explica que tasking é futuro.,Substitui recusa por genérica; não explicita caráter futuro já presente no contexto.

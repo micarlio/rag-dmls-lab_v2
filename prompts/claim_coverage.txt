@@ -1,0 +1,5 @@
+PERGUNTA: {request}
+RESPOSTA: {answer}
+
+Sem conferir verdade, a resposta aborda TODAS as informações solicitadas? Cite em uma frase curta quais partes foram abordadas e qual falta, se houver. Um nome ou valor curto basta quando somente isso foi pedido. Não exija detalhes que a pergunta não pediu. Uma recusa que explica por que não há medição aborda o pedido de valor inexistente.
+Termine com UMA linha exatamente COBERTURA: COMPLETA ou COBERTURA: PARCIAL.

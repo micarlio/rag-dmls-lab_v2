@@ -1,0 +1,5 @@
+variant,answers,declared_abstention_rate,llm_calls_mean,retrieval_calls_mean,latency_mean_seconds,latency_median_seconds
+adaptive,20,0.5,7.05,1.9,70.19454308117274,73.78786277095787
+baseline,20,0.4,1.0,0.0,13.03846551462775,11.949308833456598
+pure_llm,20,0.45,1.0,0.0,5.116284258279483,5.207654146011919
+self_rag,20,0.65,20.4,1.85,159.8414611667744,152.6180183540564

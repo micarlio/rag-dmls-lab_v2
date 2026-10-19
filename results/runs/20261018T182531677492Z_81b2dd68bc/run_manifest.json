@@ -1,0 +1,800 @@
+{
+  "fingerprint": "866680b14025c326dcaf1187ea539db986e120f5c1f0c98e74718c094d19650d",
+  "created_at_utc": "2026-10-18T18:25:31.677492+00:00",
+  "signature": {
+    "config": {
+      "schema_version": "1.0",
+      "project": "rag-control-lab",
+      "status": "development",
+      "expected_documents": 5,
+      "expected_questions": 20,
+      "ollama_url": "http://127.0.0.1:11434",
+      "generator_model": "qwen2.5:3b",
+      "embedding_model": "embeddinggemma:300m",
+      "retriever": "hybrid",
+      "lexical_analyzer": "char_wb",
+      "lexical_ngram_range": [
+        3,
+        5
+      ],
+      "retrieval_candidate_pool": 20,
+      "neighbor_window": 1,
+      "page_neighbor_chunks": 2,
+      "restrict_explicit_documents": true,
+      "exclude_frontmatter": true,
+      "reference_lookup": true,
+      "embedding_batch_size": 8,
+      "embedding_keep_alive": 0,
+      "generation_keep_alive": "2m",
+      "num_ctx": 4096,
+      "num_predict": 1024,
+      "control_num_predict": 384,
+      "planner_num_predict": 768,
+      "control_policy": "evidence_needs",
+      "max_control_searches": 3,
+      "evidence_char_cap": 5500,
+      "verifier_num_predict": 384,
+      "temperature": 0.0,
+      "seeds": [
+        42
+      ],
+      "control_seed": 42,
+      "chunk_size_chars": 900,
+      "chunk_overlap_chars": 150,
+      "top_k": 4,
+      "context_char_cap": 6500,
+      "max_rounds": 2,
+      "timeout_seconds": 600,
+      "variants": [
+        "pure_llm",
+        "baseline",
+        "adaptive",
+        "self_rag"
+      ],
+      "automatic_judge": false,
+      "results_dir": "results/runs"
+    },
+    "questions": {
+      "schema_version": "1.0",
+      "status": "frozen",
+      "corpus_fingerprint": "f4c93f2fcf9c2e9efbba4a684194ad9e2c6480605187c355bf8f116ef2a306dd",
+      "note": "Desenho experimental controlado da Família 4: 5 TCCs × 4 situações (resposta direta, busca em duas etapas, trechos que podem confundir e informação ausente) = 20 perguntas. Respostas curtas e critérios objetivos.",
+      "questions_per_document": 4,
+      "distribution": {
+        "direct": 5,
+        "two_step": 5,
+        "distractor": 5,
+        "unanswerable": 5
+      },
+      "questions": [
+        {
+          "id": "Q01",
+          "doc_id": "DOC01",
+          "scenario": "direct",
+          "kind": "direct",
+          "difficulty": "easy",
+          "answerable": true,
+          "question": "No dashboard da Biblioteca Padre Jaime Diniz (DOC01), por quantos segundos o cache da função buscar_dados_brutos_da_planilha() reaproveita a chamada à API?",
+          "expected_answer": "A chamada é reaproveitada por até 120 segundos, com @st.cache_data(ttl=120).",
+          "rubric": [
+            "Informar 120 segundos (ou @st.cache_data(ttl=120)); não confundir TTL com latência de consulta."
+          ],
+          "evidence": [
+            {
+              "doc_id": "DOC01",
+              "page": 27,
+              "chunk_id": "DOC01:P0027:C0002",
+              "note": "Seção 3.2.2: decorador @st.cache_data(ttl=120) e reaproveitamento por até 120 segundos."
+            }
+          ],
+          "controlled_initial_chunks": [
+            "DOC01:P0027:C0002"
+          ],
+          "selection_reason": "Situação 1 (resposta direta): fato localizado em um único trecho. Baseline competente deve vencer em custo."
+        },
+        {
+          "id": "Q02",
+          "doc_id": "DOC01",
+          "scenario": "two_step",
+          "kind": "synthesis",
+          "difficulty": "medium",
+          "answerable": true,
+          "question": "No projeto da Biblioteca (DOC01), como o Gspread autentica o acesso à planilha e por que a Google Drive API precisou ser ativada junto à Google Sheets API?",
+          "expected_answer": "A autenticação é realizada por conta de serviço com chave JSON compartilhada com a planilha com permissão de leitura. A Google Drive API é necessária porque o Gspread a utiliza para localizar a planilha pelo nome antes de acessá-la pela Sheets API.",
+          "rubric": [
+            "Identificar autenticação via conta de serviço com chave JSON e compartilhamento da planilha com permissão de leitura.",
+            "Explicar que a Google Drive API é usada pelo Gspread para localizar a planilha pelo nome antes do acesso pela Sheets API."
+          ],
+          "evidence": [
+            {
+              "doc_id": "DOC01",
+              "page": 27,
+              "chunk_id": "DOC01:P0027:C0001",
+              "note": "Seção 3.2.1: criação da conta de serviço, chave JSON e compartilhamento da planilha com o e-mail da conta."
+            },
+            {
+              "doc_id": "DOC01",
+              "page": 26,
+              "chunk_id": "DOC01:P0026:C0003",
+              "note": "Seção 3.2.1: ativação da Drive API necessária para o Gspread localizar a planilha pelo nome."
+            }
+          ],
+          "controlled_initial_chunks": [
+            "DOC01:P0027:C0001"
+          ],
+          "selection_reason": "Situação 2 (busca em duas etapas): o contexto inicial traz a conta de serviço e a chave, mas a justificativa da Drive API exige busca complementar."
+        },
+        {
+          "id": "Q03",
+          "doc_id": "DOC01",
+          "scenario": "distractor",
+          "kind": "synthesis",
+          "difficulty": "hard",
+          "answerable": true,
+          "question": "No dashboard da biblioteca (DOC01), como o carregamento trata datas inválidas da planilha e como a interface reage a um intervalo de consulta inválido? Distinga o tratamento dos dados do tratamento dos filtros.",
+          "expected_answer": "No carregamento, pd.to_datetime com errors=\"coerce\" converte datas inválidas em NaT. Na interface, se a data inicial for maior que a final ou anterior à doação mais antiga, o sistema rejeita o intervalo e mantém o último estado válido.",
+          "rubric": [
+            "Identificar conversão de datas inválidas/ausentes para NaT por pd.to_datetime com errors=\"coerce\" na carga dos dados.",
+            "Identificar que na interface intervalo inválido (início > fim ou anterior à primeira doação) é rejeitado e mantém o último estado válido.",
+            "Distinguir a limpeza das células na carga da validação do intervalo nos filtros da interface."
+          ],
+          "evidence": [
+            {
+              "doc_id": "DOC01",
+              "page": 28,
+              "chunk_id": "DOC01:P0028:C0002",
+              "note": "Seção 3.2.3: limpeza dos dados brutos e conversão para NaT."
+            },
+            {
+              "doc_id": "DOC01",
+              "page": 36,
+              "chunk_id": "DOC01:P0036:C0002",
+              "note": "Seção 3.4.3: validação de datas na interface e preservação do último estado válido."
+            }
+          ],
+          "controlled_initial_chunks": [
+            "DOC01:P0028:C0002",
+            "DOC01:P0036:C0002"
+          ],
+          "selection_reason": "Situação 3 (trechos que podem confundir): exige separar tratamento das células na carga e tratamento do intervalo nos controles visuais."
+        },
+        {
+          "id": "Q04",
+          "doc_id": "DOC01",
+          "scenario": "unanswerable",
+          "kind": "unanswerable",
+          "difficulty": "medium",
+          "answerable": false,
+          "question": "No sistema da Biblioteca Padre Jaime Diniz (DOC01), qual foi a latência mediana de consulta ao dashboard, em milissegundos, medida em um teste de desempenho?",
+          "expected_answer": "O documento não informa uma medição de latência mediana em milissegundos. Não é possível fornecer esse valor.",
+          "rubric": [
+            "Declarar que a medição solicitada não é informada no documento.",
+            "Não apresentar o TTL do cache (120 s) ou prazos do fluxo patrimonial como latência de consulta."
+          ],
+          "evidence": [
+            {
+              "doc_id": "DOC01",
+              "page": 27,
+              "chunk_id": "DOC01:P0027:C0002",
+              "note": "Menciona TTL de cache de 120s, mas não medição de latência mediana em ms."
+            },
+            {
+              "doc_id": "DOC01",
+              "page": 53,
+              "chunk_id": "DOC01:P0053:C0001",
+              "note": "Conclusão qualitativa sem teste de latência temporizado."
+            }
+          ],
+          "controlled_initial_chunks": [
+            "DOC01:P0027:C0002",
+            "DOC01:P0053:C0001"
+          ],
+          "selection_reason": "Situação 4 (informação ausente): pedido plausível; o contexto tem o TTL de 120s que pode induzir falsa resposta se o modelo não abstiver."
+        },
+        {
+          "id": "Q05",
+          "doc_id": "DOC02",
+          "scenario": "direct",
+          "kind": "direct",
+          "difficulty": "easy",
+          "answerable": true,
+          "question": "No projeto do forno solar (DOC02), qual software foi usado para projetar o par de engrenagens cilíndricas de dentes retos?",
+          "expected_answer": "Autodesk Fusion 360.",
+          "rubric": [
+            "Identificar Autodesk Fusion 360."
+          ],
+          "evidence": [
+            {
+              "doc_id": "DOC02",
+              "page": 29,
+              "chunk_id": "DOC02:P0029:C0001",
+              "note": "Seção 3.2.2: projeto do par de engrenagens no software Autodesk Fusion 360."
+            }
+          ],
+          "controlled_initial_chunks": [
+            "DOC02:P0029:C0001"
+          ],
+          "selection_reason": "Situação 1 (resposta direta): identificação direta de software em trecho único."
+        },
+        {
+          "id": "Q06",
+          "doc_id": "DOC02",
+          "scenario": "two_step",
+          "kind": "synthesis",
+          "difficulty": "medium",
+          "answerable": true,
+          "question": "No forno solar (DOC02), qual particularidade mecânica do sistema de transmissão por engrenagens exigiu compensação e como ela foi corrigida no código do algoritmo?",
+          "expected_answer": "O par de engrenagens inverte o sentido de rotação entre o servomotor e a câmara giratória. A correção no código consistiu em inverter o sinal da variável de correção do servomotor horizontal.",
+          "rubric": [
+            "Identificar que o par de engrenagens inverte o sentido de rotação (a câmara gira no sentido oposto ao servomotor).",
+            "Identificar que a correção no código consistiu em inverter o sinal da variável de correção do servo horizontal."
+          ],
+          "evidence": [
+            {
+              "doc_id": "DOC02",
+              "page": 29,
+              "chunk_id": "DOC02:P0029:C0001",
+              "note": "Seção 3.2.2: introduz a transmissão pelo par de engrenagens cilíndricas de dentes retos."
+            },
+            {
+              "doc_id": "DOC02",
+              "page": 33,
+              "chunk_id": "DOC02:P0033:C0001",
+              "note": "Seção 3.3: descreve a inversão mecânica de sentido e a compensação por inversão de sinal no código."
+            }
+          ],
+          "controlled_initial_chunks": [
+            "DOC02:P0029:C0001"
+          ],
+          "selection_reason": "Situação 2 (busca em duas etapas): o contexto inicial menciona as engrenagens, mas a inversão e o ajuste de sinal no código estão na Seção 3.3."
+        },
+        {
+          "id": "Q07",
+          "doc_id": "DOC02",
+          "scenario": "distractor",
+          "kind": "synthesis",
+          "difficulty": "hard",
+          "answerable": true,
+          "question": "No forno solar (DOC02), por que a variante de rotação contínua do servomotor MG996R não é adequada ao rastreamento e como foi reparada a falha interna do servomotor horizontal observada na bancada?",
+          "expected_answer": "A variante de rotação contínua não realiza posicionamento angular. Na bancada, rompeu-se uma engrenagem interna de nylon, substituída por uma engrenagem metálica de um servo reserva compatível.",
+          "rubric": [
+            "Distinguir rotação contínua de posicionamento angular.",
+            "Identificar rompimento da engrenagem interna de nylon do servomotor.",
+            "Identificar substituição por engrenagem metálica de servo reserva; não confundir com as engrenagens externas de PLA."
+          ],
+          "evidence": [
+            {
+              "doc_id": "DOC02",
+              "page": 25,
+              "chunk_id": "DOC02:P0025:C0002",
+              "note": "Seção 2.4: inadequação da variante de rotação contínua do MG996R para controle angular."
+            },
+            {
+              "doc_id": "DOC02",
+              "page": 30,
+              "chunk_id": "DOC02:P0030:C0001",
+              "note": "Seção 3.2.3: falha da engrenagem interna de nylon e substituição por engrenagem metálica de servo reserva."
+            }
+          ],
+          "controlled_initial_chunks": [
+            "DOC02:P0025:C0002",
+            "DOC02:P0030:C0001"
+          ],
+          "selection_reason": "Situação 3 (trechos que podem confundir): distingue características de atuadores e causas de falha interna (nylon) vs engrenagens externas (PLA)."
+        },
+        {
+          "id": "Q08",
+          "doc_id": "DOC02",
+          "scenario": "unanswerable",
+          "kind": "unanswerable",
+          "difficulty": "medium",
+          "answerable": false,
+          "question": "No protótipo de forno solar (DOC02), qual temperatura interna máxima, em graus Celsius, foi medida com rastreamento ativo em comparação com o forno fixo?",
+          "expected_answer": "O trabalho não apresenta medição de temperaturas máximas comparativas entre forno fixo e com rastreamento. Essa comparação térmica é proposta para trabalhos futuros.",
+          "rubric": [
+            "Reconhecer a ausência de temperaturas máximas comparativas medidas.",
+            "Não apresentar projeções ou valores estimados como medição experimental."
+          ],
+          "evidence": [
+            {
+              "doc_id": "DOC02",
+              "page": 34,
+              "chunk_id": "DOC02:P0034:C0001",
+              "note": "Seção 4.1: resultados mecânicos e eletrônicos; comparação térmica não foi realizada."
+            },
+            {
+              "doc_id": "DOC02",
+              "page": 37,
+              "chunk_id": "DOC02:P0037:C0001",
+              "note": "Trabalhos futuros: ensaios térmicos comparativos permanecem em aberto."
+            }
+          ],
+          "controlled_initial_chunks": [
+            "DOC02:P0034:C0001",
+            "DOC02:P0037:C0001"
+          ],
+          "selection_reason": "Situação 4 (informação ausente): ensaio térmico plausível, mas explicitamente deixado para trabalhos futuros."
+        },
+        {
+          "id": "Q09",
+          "doc_id": "DOC03",
+          "scenario": "direct",
+          "kind": "direct",
+          "difficulty": "easy",
+          "answerable": true,
+          "question": "No Organiz.ai (DOC03), qual framework implementa a camada de apresentação e sua interface conversacional?",
+          "expected_answer": "Streamlit.",
+          "rubric": [
+            "Identificar Streamlit."
+          ],
+          "evidence": [
+            {
+              "doc_id": "DOC03",
+              "page": 25,
+              "chunk_id": "DOC03:P0025:C0001",
+              "note": "Seção 3.3: camada de apresentação implementada com Streamlit."
+            }
+          ],
+          "controlled_initial_chunks": [
+            "DOC03:P0025:C0001"
+          ],
+          "selection_reason": "Situação 1 (resposta direta): identificação pontual da camada visual."
+        },
+        {
+          "id": "Q10",
+          "doc_id": "DOC03",
+          "scenario": "two_step",
+          "kind": "synthesis",
+          "difficulty": "medium",
+          "answerable": true,
+          "question": "No Organiz.ai (DOC03), qual é o papel do orquestrador no fluxo de mensagens e quais verificações nos testes automatizados confirmaram sua capacidade de localizar os agentes especializados?",
+          "expected_answer": "O orquestrador coordena a comunicação interpretando intenções e direcionando requisições aos agentes especializados sem executar regras de negócio. Nos testes, verificou-se o endpoint /agents com a lista dos agentes e confirmou-se que as URLs registradas eram alcançáveis.",
+          "rubric": [
+            "Identificar que o orquestrador interpreta intenções e encaminha requisições ao especialista adequado sem executar diretamente regras de negócio.",
+            "Identificar que os testes confirmaram o registro dos agentes no endpoint /agents (com URL e descrição) e a alcançabilidade das URLs registradas."
+          ],
+          "evidence": [
+            {
+              "doc_id": "DOC03",
+              "page": 25,
+              "chunk_id": "DOC03:P0025:C0002",
+              "note": "Seção 3.3: papel do orquestrador de coordenação e roteamento sem execução de regras de negócio."
+            },
+            {
+              "doc_id": "DOC03",
+              "page": 31,
+              "chunk_id": "DOC03:P0031:C0002",
+              "note": "Seção 4.1: validação do endpoint /agents e alcançabilidade das URLs dos especialistas."
+            }
+          ],
+          "controlled_initial_chunks": [
+            "DOC03:P0025:C0002"
+          ],
+          "selection_reason": "Situação 2 (busca em duas etapas): o contexto inicial descreve o papel conceitual do orquestrador; os testes empíricos de alcançabilidade de URLs estão na Seção 4.1."
+        },
+        {
+          "id": "Q11",
+          "doc_id": "DOC03",
+          "scenario": "distractor",
+          "kind": "synthesis",
+          "difficulty": "hard",
+          "answerable": true,
+          "question": "Na avaliação do Organiz.ai (DOC03), qual critério determinava a aprovação de um teste automatizado e qual foi a causa atribuída à única falha observada na suíte?",
+          "expected_answer": "A aprovação exigia satisfazer todas as asserções (status HTTP esperado, campos obrigatórios e tipos de dados). A única falha decorreu de indisponibilidade temporária da API do provedor (Groq/LLM), e não de falha na arquitetura interna.",
+          "rubric": [
+            "Identificar que a aprovação exige cumprimento de todas as asserções: status HTTP, campos obrigatórios e tipos de dados.",
+            "Identificar que a única falha ocorreu por indisponibilidade temporária da API/provedor externo (Groq), distinguindo-a de defeito na arquitetura interna."
+          ],
+          "evidence": [
+            {
+              "doc_id": "DOC03",
+              "page": 30,
+              "chunk_id": "DOC03:P0030:C0001",
+              "note": "Seção 4.1: critérios de aceitação com todas as asserções satisfeitas."
+            },
+            {
+              "doc_id": "DOC03",
+              "page": 41,
+              "chunk_id": "DOC03:P0041:C0003",
+              "note": "Seção 4.4: única falha atribuída à instabilidade do provedor de LLM externo e não à arquitetura."
+            }
+          ],
+          "controlled_initial_chunks": [
+            "DOC03:P0030:C0001",
+            "DOC03:P0041:C0003"
+          ],
+          "selection_reason": "Situação 3 (trechos que podem confundir): exige distinguir critérios da suíte de teste de limitações externas de infraestrutura."
+        },
+        {
+          "id": "Q12",
+          "doc_id": "DOC03",
+          "scenario": "unanswerable",
+          "kind": "unanswerable",
+          "difficulty": "medium",
+          "answerable": false,
+          "question": "No Organiz.ai (DOC03), qual percentual de redução dos esquecimentos foi medido em participantes diagnosticados com TDAH após usar o protótipo?",
+          "expected_answer": "Esse percentual não foi medido: a avaliação foi puramente técnica e automatizada sobre a infraestrutura, sem testes clínicos ou medição com participantes reais diagnosticados com TDAH.",
+          "rubric": [
+            "Declarar a ausência da medição com participantes diagnosticados.",
+            "Não utilizar a taxa de aprovação dos testes de software como percentual de redução de esquecimentos."
+          ],
+          "evidence": [
+            {
+              "doc_id": "DOC03",
+              "page": 31,
+              "chunk_id": "DOC03:P0031:C0002",
+              "note": "Apresenta resultados de infraestrutura técnica automatizada."
+            },
+            {
+              "doc_id": "DOC03",
+              "page": 41,
+              "chunk_id": "DOC03:P0041:C0003",
+              "note": "Seção 4.4: ausência explícita de estudo de impacto clínico ou eficácia assistiva com usuários reais diagnosticados."
+            }
+          ],
+          "controlled_initial_chunks": [
+            "DOC03:P0031:C0002",
+            "DOC03:P0041:C0003"
+          ],
+          "selection_reason": "Situação 4 (informação ausente): contrasta validação técnica funcional com eficácia assistiva clínica não medida."
+        },
+        {
+          "id": "Q13",
+          "doc_id": "DOC04",
+          "scenario": "direct",
+          "kind": "direct",
+          "difficulty": "easy",
+          "answerable": true,
+          "question": "No agente de interfaces gráficas estudado no DOC04, qual ação sinaliza o encerramento de uma tarefa?",
+          "expected_answer": "A ação terminate.",
+          "rubric": [
+            "Identificar a ação terminate."
+          ],
+          "evidence": [
+            {
+              "doc_id": "DOC04",
+              "page": 61,
+              "chunk_id": "DOC04:P0061:C0002",
+              "note": "Seção 4.3.1 e Figura 11: terminate encerra a tarefa."
+            }
+          ],
+          "controlled_initial_chunks": [
+            "DOC04:P0061:C0002"
+          ],
+          "selection_reason": "Situação 1 (resposta direta): identificação unívoca de ação final do agente."
+        },
+        {
+          "id": "Q14",
+          "doc_id": "DOC04",
+          "scenario": "two_step",
+          "kind": "synthesis",
+          "difficulty": "medium",
+          "answerable": true,
+          "question": "No estudo de navegação (DOC04), como variaram as taxas gerais no ScreenSpot-Pro e no OSWorld-Verified entre o modelo base e o treinado, e qual comportamento nas trajetórias explica o resultado do OSWorld?",
+          "expected_answer": "No ScreenSpot-Pro a taxa geral subiu de 33,70% para 38,70%. No OSWorld-Verified caiu de 15,10% para 11,31%. Essa regressão decorreu da falha em reconhecer a conclusão da tarefa: o modelo treinado atinge o objetivo mas prossegue reabrindo menus e repetindo ações.",
+          "rubric": [
+            "ScreenSpot-Pro: subiu de 33,70% para 38,70%.",
+            "OSWorld-Verified: caiu de 15,10% para 11,31%.",
+            "Explicar a regressão por falha de terminação (continuar agindo após atingir o objetivo), e não por perda de ancoramento/localização."
+          ],
+          "evidence": [
+            {
+              "doc_id": "DOC04",
+              "page": 59,
+              "chunk_id": "DOC04:P0059:C0002",
+              "note": "Tabela 4: acurácia no ScreenSpot-Pro (33,70% para 38,70%)."
+            },
+            {
+              "doc_id": "DOC04",
+              "page": 61,
+              "chunk_id": "DOC04:P0061:C0002",
+              "note": "Tabela 5 e Seção 4.3.1: regressão no OSWorld e análise comportamental de terminação na Figura 11."
+            }
+          ],
+          "controlled_initial_chunks": [
+            "DOC04:P0059:C0002"
+          ],
+          "selection_reason": "Situação 2 (busca em duas etapas): o contexto inicial traz a Tabela 4 do ScreenSpot-Pro; a análise das trajetórias do OSWorld requer busca adicional."
+        },
+        {
+          "id": "Q15",
+          "doc_id": "DOC04",
+          "scenario": "distractor",
+          "kind": "synthesis",
+          "difficulty": "hard",
+          "answerable": true,
+          "question": "No DOC04, que diferença na proporção dos alvos da ação terminate existe entre os treinos principal e preliminar, e por que essa proporção é maior no preliminar?",
+          "expected_answer": "A ação terminate representa cerca de 5% dos alvos no treino principal e cerca de 30% no preliminar. A proporção é maior no preliminar pela exclusão das ações de ancoramento dos alvos, o que reduz o denominador de ações.",
+          "rubric": [
+            "Identificar aproximadamente 5% no treino principal e cerca de 30% no preliminar.",
+            "Explicar que a maior proporção no preliminar decorre da exclusão das ações de ancoramento (reduzindo o denominador de ações)."
+          ],
+          "evidence": [
+            {
+              "doc_id": "DOC04",
+              "page": 64,
+              "chunk_id": "DOC04:P0064:C0002",
+              "note": "Seção 4.5: distribuição dos alvos terminate (~5% no principal e ~30% no preliminar por exclusão de grounding)."
+            }
+          ],
+          "controlled_initial_chunks": [
+            "DOC04:P0064:C0002"
+          ],
+          "selection_reason": "Situação 3 (trechos que podem confundir): exige interpretar contraste estrutural de dados e evitar falsa correlação causal."
+        },
+        {
+          "id": "Q16",
+          "doc_id": "DOC04",
+          "scenario": "unanswerable",
+          "kind": "unanswerable",
+          "difficulty": "medium",
+          "answerable": false,
+          "question": "No estudo do DOC04, qual foi o efeito isolado do aumento do batch size, em pontos percentuais no OSWorld-Verified, medido por uma ablação controlada?",
+          "expected_answer": "Não há efeito numérico isolado medido por ablação controlada: múltiplos fatores variaram simultaneamente entre as duas configurações, e estudos de ablação foram apenas propostos para trabalhos futuros.",
+          "rubric": [
+            "Não apresentar um efeito numérico isolado para o batch size.",
+            "Declarar que não houve ablação controlada para isolar esse fator e que múltiplos parâmetros variaram simultaneamente."
+          ],
+          "evidence": [
+            {
+              "doc_id": "DOC04",
+              "page": 59,
+              "chunk_id": "DOC04:P0059:C0002",
+              "note": "Tabela com deltas gerais de benchmarks que não correspondem a ablações de batch size."
+            },
+            {
+              "doc_id": "DOC04",
+              "page": 66,
+              "chunk_id": "DOC04:P0066:C0002",
+              "note": "Seção 4.6.1: nove fatores variaram simultaneamente, impedindo isolamento de causas específicas."
+            }
+          ],
+          "controlled_initial_chunks": [
+            "DOC04:P0059:C0002",
+            "DOC04:P0066:C0002"
+          ],
+          "selection_reason": "Situação 4 (informação ausente): investiga capacidade de recusa diante de deltas agregados não atribuíveis a uma variável isolada."
+        },
+        {
+          "id": "Q17",
+          "doc_id": "DOC05",
+          "scenario": "direct",
+          "kind": "direct",
+          "difficulty": "easy",
+          "answerable": true,
+          "question": "No perfilamento do RTM (DOC05), quais macros delimitam o início e o fim de uma região instrumentada manualmente?",
+          "expected_answer": "pascal_start marca o início e pascal_stop marca o fim.",
+          "rubric": [
+            "Identificar pascal_start para início e pascal_stop para fim."
+          ],
+          "evidence": [
+            {
+              "doc_id": "DOC05",
+              "page": 37,
+              "chunk_id": "DOC05:P0037:C0001",
+              "note": "Capítulo 5: pascal_start para início e pascal_stop para o fim."
+            }
+          ],
+          "controlled_initial_chunks": [
+            "DOC05:P0037:C0001"
+          ],
+          "selection_reason": "Situação 1 (resposta direta): identificação pontual de sintaxe de instrumentação."
+        },
+        {
+          "id": "Q18",
+          "doc_id": "DOC05",
+          "scenario": "two_step",
+          "kind": "synthesis",
+          "difficulty": "medium",
+          "answerable": true,
+          "question": "No RTM (DOC05), como a diretiva single contribui para gargalos na propagação e no swap, e qual estratégia foi proposta para reduzir a ociosidade das threads?",
+          "expected_answer": "A diretiva single serializa a inserção da fonte e o swap de ponteiros com barreiras de sincronização. Para reduzir a ociosidade das threads, foi proposta como trabalho futuro a refatoração com o modelo de tarefas (tasking) do OpenMP.",
+          "rubric": [
+            "Identificar que a diretiva single torna a inserção da fonte e/ou o swap sequenciais com barreiras implícitas de sincronização.",
+            "Identificar a proposta de refatoração com o modelo de tarefas (tasking) do OpenMP para mitigar a ociosidade."
+          ],
+          "evidence": [
+            {
+              "doc_id": "DOC05",
+              "page": 43,
+              "chunk_id": "DOC05:P0043:C0002",
+              "note": "Capítulo 6: restrição da diretiva single na propagação e no swap, impondo barreiras e limitando a escalabilidade."
+            },
+            {
+              "doc_id": "DOC05",
+              "page": 47,
+              "chunk_id": "DOC05:P0047:C0002",
+              "note": "Capítulo 7: proposta de refatoração com modelo de tarefas (tasking) do OpenMP como trabalho futuro."
+            }
+          ],
+          "controlled_initial_chunks": [
+            "DOC05:P0043:C0002"
+          ],
+          "selection_reason": "Situação 2 (busca em duas etapas): o contexto inicial detalha o gargalo de single; a proposta de tasking está na conclusão (Capítulo 7)."
+        },
+        {
+          "id": "Q19",
+          "doc_id": "DOC05",
+          "scenario": "distractor",
+          "kind": "synthesis",
+          "difficulty": "hard",
+          "answerable": true,
+          "question": "Na análise do RTM (DOC05), como a eficiência paralela é definida e qual ressalva metodológica existe sobre a execução de referência adotada nos experimentos?",
+          "expected_answer": "A eficiência é definida como o speedup dividido pelo número de núcleos (E_p = S_p / p). A ressalva é que a referência experimental foi a execução do próprio código paralelo com 1 thread (embutindo overhead do OpenMP) e não uma versão puramente sequencial, escolha feita para viabilizar a automação com o PaScal Analyzer.",
+          "rubric": [
+            "Eficiência igual a speedup dividido pelo número de núcleos/recursos (E_p = S_p / p).",
+            "Referência adotada: código paralelo com 1 thread (embutindo overhead do OpenMP), e não código puramente sequencial.",
+            "Relacionar essa escolha à automação dos experimentos pelo PaScal Analyzer."
+          ],
+          "evidence": [
+            {
+              "doc_id": "DOC05",
+              "page": 23,
+              "chunk_id": "DOC05:P0023:C0003",
+              "note": "Seção 2.2.3: definição matemática da eficiência (E_p = S_p / p)."
+            },
+            {
+              "doc_id": "DOC05",
+              "page": 37,
+              "chunk_id": "DOC05:P0037:C0001",
+              "note": "Capítulo 5: código paralelo com 1 thread como referência e automação com PaScal Analyzer."
+            }
+          ],
+          "controlled_initial_chunks": [
+            "DOC05:P0023:C0003",
+            "DOC05:P0037:C0001"
+          ],
+          "selection_reason": "Situação 3 (trechos que podem confundir): exige associar definição matemática à decisão metodológica de referência experimental."
+        },
+        {
+          "id": "Q20",
+          "doc_id": "DOC05",
+          "scenario": "unanswerable",
+          "kind": "unanswerable",
+          "difficulty": "medium",
+          "answerable": false,
+          "question": "No RTM (DOC05), qual speedup foi medido após a refatoração com o modelo de tarefas (tasking) do OpenMP?",
+          "expected_answer": "Nenhum speedup foi medido após essa refatoração: o uso de tasking é apenas uma proposta de trabalho futuro, cuja implementação e comparação de desempenho ainda seriam realizadas.",
+          "rubric": [
+            "Declarar ausência de resultado medido após a refatoração com tasking.",
+            "Reconhecer que tasking é apenas uma proposta de trabalho futuro."
+          ],
+          "evidence": [
+            {
+              "doc_id": "DOC05",
+              "page": 47,
+              "chunk_id": "DOC05:P0047:C0002",
+              "note": "Capítulo 7: tasking apresentado expressamente como trabalho futuro ainda não implementado."
+            }
+          ],
+          "controlled_initial_chunks": [
+            "DOC05:P0047:C0002"
+          ],
+          "selection_reason": "Situação 4 (informação ausente): distingue proposta metodológica futura de medição já realizada."
+        }
+      ]
+    },
+    "corpus": [
+      {
+        "doc_id": "DOC01",
+        "filename": "01_2026_Gabriel-de-Oliveira-Barreto_Desenvolvimento-de-um-Sistema-Interativo-para-Monitoramento-e-Analise-do-Fluxo-de-Materiais-Doados-na-Biblioteca-Padre-Jaime-Diniz-utilizando-Python-e-Streamlit.pdf",
+        "sha256": "322cf232f82575195a699679e82ec9a8608ff6bfdb947d0668a65970dcab09df",
+        "title": "Desenvolvimento de um Sistema Interativo para Monitoramento e Análise do Fluxo de Materiais Doados na Biblioteca Padre Jaime Diniz utilizando Python e Streamlit",
+        "pages": 55,
+        "text_pages": 46,
+        "extracted_chars": 65511,
+        "source_url": "https://repositorio.ufrn.br/handle/123456789/69887",
+        "redistribution_note": "A conferir; cópia local"
+      },
+      {
+        "doc_id": "DOC02",
+        "filename": "02_2026_Aylton-Correia-Gomes-Dias_Sistema-de-rastreamento-solar-de-dois-eixos-baseado-em-arduino-aplicado-a-um-prototipo-de-forno-solar-artesanal.pdf",
+        "sha256": "23c231b4815de31558a4f4b966bafe3c6cf96115a51fe15007466266d6726850",
+        "title": "Sistema de rastreamento solar de dois eixos baseado em arduino aplicado a um protótipo de forno solar artesanal",
+        "pages": 55,
+        "text_pages": 55,
+        "extracted_chars": 70174,
+        "source_url": "https://repositorio.ufrn.br/handle/123456789/69978",
+        "redistribution_note": "A conferir; cópia local"
+      },
+      {
+        "doc_id": "DOC03",
+        "filename": "03_2026_Quelita-Miriam-Nunes-Ferraz_Sistema-Assistivo-Multiagente-para-Gestao-de-Rotinas-Uma-Abordagem-Voltada-a-Pessoas-com-TDAH.pdf",
+        "sha256": "b471cae59fee2f4a5d5eca5f119d150f53871a8cb3bc6d81a8ec37fb722e3834",
+        "title": "Sistema Assistivo Multiagente para Gestão de Rotinas: Uma Abordagem Voltada a Pessoas com TDAH",
+        "pages": 46,
+        "text_pages": 46,
+        "extracted_chars": 92091,
+        "source_url": "https://repositorio.ufrn.br/handle/123456789/69972",
+        "redistribution_note": "A conferir; cópia local"
+      },
+      {
+        "doc_id": "DOC04",
+        "filename": "04_2026_Thiago-Fernandes-Pinheiro-de-Medeiros-Rodrigues_Navegacao-autonoma-local-estudo-empirico-sobre-o-ajuste-de-modelos-de-linguagem-visao-compactos-para-o-uso-de-interfaces-graficas.pdf",
+        "sha256": "f8b74a542ae89c0d682aa21a10fa7b26026eea7ca272d0741e2b43ee3ef4a1c9",
+        "title": "Navegação autônoma local: estudo empírico sobre o ajuste de modelos de linguagem-visão compactos para o uso de interfaces gráficas",
+        "pages": 80,
+        "text_pages": 80,
+        "extracted_chars": 157478,
+        "source_url": "https://repositorio.ufrn.br/handle/123456789/69002",
+        "redistribution_note": "A conferir; cópia local"
+      },
+      {
+        "doc_id": "DOC05",
+        "filename": "05_2026_Julia-Alanne-Silvino-dos-Santos_Analise-de-escalabilidade-de-um-algoritmo-de-migracao-reversa-no-tempo.pdf",
+        "sha256": "78223238f96f173025e8ca7edf9a22201718ac30c2447c1fba55c28eeb055d3e",
+        "title": "Análise de escalabilidade de um algoritmo de migração reversa no tempo",
+        "pages": 50,
+        "text_pages": 42,
+        "extracted_chars": 59668,
+        "source_url": "https://repositorio.ufrn.br/handle/123456789/70962",
+        "redistribution_note": "A conferir; cópia local"
+      }
+    ],
+    "source_hashes": {
+      "rag_lab.py": "bcc9d13821bffb576a40c5f2807833a928bd567880c8841ee0ca1dbce37e1f39",
+      "configs/experiment.json": "b62132856f4c4cc19ea3578ba34dd8545af8441192a14a0348361f2b33143531",
+      "prompts/claim_coverage.txt": "b93065bb9e22cbd9bbbc6cb33275900bb687fac6ed213d84549fceec8fe82c75",
+      "prompts/claim_preservation.txt": "5322cc802a7e70374c19edb301e63588e1373509289b120bf09af3483db34f4a",
+      "prompts/claim_support.txt": "cbc399c2666a3d52ee8bd306796679099cc94d593d870fd264e1585722cac032",
+      "prompts/evidence_select.txt": "bbab194951d8ea721682a7a34ccd9da6bc6678bf69ba6d21e2ac24fc9c10e636",
+      "prompts/generator.txt": "97b1e6627fb053b03dc1505c279226663a2d409f900a8c3095904be79fa37d18",
+      "prompts/judge.txt": "e00c6b0415f9e3fe11983d9619a55324c77ec128a1bfa466d39d8c9466b56a6a",
+      "prompts/planner.txt": "c3d8fbd6d7f618f39c7e135edba6fcb27cd041cda6591e5208c8eca602ef0941",
+      "prompts/pure_llm.txt": "7f6b34179e912eaa8f041efb319a12ea3d51901f20adf1f05b5244312b07eefb",
+      "prompts/router.txt": "a93a13cc47ae28188593c5cd2b572e76af544b689c70b720c4fd97dce5b08a63",
+      "prompts/verifier.txt": "92ddc95d765f57efe81c25c2c73333cda7d998675a6c2479a68c191ff096c8f6",
+      "prompts/verifier_coverage.txt": "605d0802984bf28dbf9b2f56a899546730e2b801347dbc7a71f3d21281983cb6",
+      "rag_control.py": "b232d6ccb8e01c628164573033642a3b668689c2576e0f182b264df5abeeb28b"
+    },
+    "models": {
+      "qwen2.5:3b": {
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "size": 1929912432,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 32768,
+          "embedding_length": 2048,
+          "runner": "ggml"
+        }
+      },
+      "embeddinggemma:300m": {
+        "digest": "85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1",
+        "size": 621875917,
+        "details": {
+          "parent_model": "embeddinggemma:300m-bf16",
+          "format": "gguf",
+          "family": "gemma3",
+          "families": [
+            "gemma3"
+          ],
+          "parameter_size": "307.58M",
+          "quantization_level": "BF16",
+          "context_length": 2048,
+          "embedding_length": 768,
+          "runner": "ggml"
+        }
+      }
+    },
+    "packages": {
+      "numpy": "2.4.6",
+      "scikit-learn": "1.9.0",
+      "pypdf": "6.12.0",
+      "requests": "2.34.2",
+      "pandas": "2.3.3"
+    }
+  },
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "machine": "arm64",
+  "status": "complete",
+  "evaluation_mode": "controlled",
+  "measurement_policy": "Modo controlled. Consulta inicial pré-computada em modo controlado; consultas adicionais contadas. Warmup fora da latência; geração e controle reais contados. Sem cache de roteamento.",
+  "completed_answers": 80
+}

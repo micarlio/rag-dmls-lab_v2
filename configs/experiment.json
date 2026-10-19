@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "project": "rag-control-lab",
+  "status": "development",
+  "expected_documents": 5,
+  "expected_questions": 20,
+  "ollama_url": "http://127.0.0.1:11434",
+  "generator_model": "qwen2.5:3b",
+  "embedding_model": "embeddinggemma:300m",
+  "retriever": "hybrid",
+  "lexical_analyzer": "char_wb",
+  "lexical_ngram_range": [
+    3,
+    5
+  ],
+  "retrieval_candidate_pool": 20,
+  "neighbor_window": 1,
+  "page_neighbor_chunks": 2,
+  "restrict_explicit_documents": true,
+  "exclude_frontmatter": true,
+  "reference_lookup": true,
+  "embedding_batch_size": 8,
+  "embedding_keep_alive": 0,
+  "generation_keep_alive": "2m",
+  "num_ctx": 4096,
+  "num_predict": 1024,
+  "control_num_predict": 384,
+  "planner_num_predict": 768,
+  "control_policy": "evidence_needs",
+  "max_control_searches": 3,
+  "evidence_char_cap": 5500,
+  "verifier_num_predict": 384,
+  "temperature": 0.0,
+  "seeds": [
+    42
+  ],
+  "control_seed": 42,
+  "chunk_size_chars": 900,
+  "chunk_overlap_chars": 150,
+  "top_k": 4,
+  "context_char_cap": 6500,
+  "max_rounds": 2,
+  "timeout_seconds": 600,
+  "variants": [
+    "pure_llm",
+    "baseline",
+    "adaptive",
+    "self_rag"
+  ],
+  "automatic_judge": false,
+  "results_dir": "results/runs"
+}

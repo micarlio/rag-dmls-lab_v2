@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.DS_Store
+.env
+.env.*
+!.env.example
+.cache/
+.models/
+.runtime/
+# PDFs ficam locais até conferir as condições de redistribuição de cada TCC.
+/corpus/documentos/*.[pP][dD][fF]
+/results/pilot/
+/dist/
+# CSVs, traces e manifestos das execuções oficiais podem ser versionados.

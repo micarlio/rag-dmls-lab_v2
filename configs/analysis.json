@@ -1,0 +1,9 @@
+{
+  "active_run": "results/runs/20261018T182531677492Z_81b2dd68bc",
+  "evaluation_mode": "controlled",
+  "review_type": "retrospective_rubric_review",
+  "primary_focus": "control_mechanisms",
+  "revision_provenance": "joint_and_per_item_revision_observed",
+  "figures_dir": "results/figures",
+  "review_methodology": "docs/DESENHO_EXPERIMENTAL.md"
+}

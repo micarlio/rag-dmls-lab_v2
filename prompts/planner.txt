@@ -1,0 +1,6 @@
+Decomponha o PEDIDO original em necessidades de informação verificáveis, antes de responder. Não responda, não adivinhe valores e não use conhecimento externo para preencher o plano.
+Cada necessidade deve ser curta, mas preservar as entidades, condições, unidades, distinção entre medição e proposta futura e todos os atributos explicitamente pedidos. Separe questões independentes; mantenha juntos valores que precisam ser associados, como modelo base/treinado e nome da métrica. Não adicione exigências que o pedido não fez.
+Para cada necessidade escreva request (o que deve ser respondido) e query (consulta curta de busca, sem resposta presumida). Não indique páginas.
+route=single quando uma descrição localizada provavelmente basta. route=iterative quando é preciso relacionar resultados, método, condições ou partes distintas. Estar no mesmo documento não implica busca única. Use direct somente para pedidos que não dependem de documentos.
+PEDIDO: {question}
+Retorne route, reason e needs. No máximo cinco necessidades, sem duplicatas.
