@@ -5,5 +5,5 @@
   "primary_focus": "control_mechanisms",
   "revision_provenance": "joint_and_per_item_revision_observed",
   "figures_dir": "results/figures",
-  "review_methodology": "docs/DESENHO_EXPERIMENTAL.md"
+  "review_methodology": "docs/ANALISE_CONTROLE.md"
 }

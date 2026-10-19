@@ -5,6 +5,12 @@ busca complementar, verificação e revisão ajudam ou prejudicam a resposta,
 usando como referência um baseline sem buscas adicionais. Cinco TCCs em
 português constituem o corpus de teste; o objeto do estudo são os mecanismos.
 
+## Materiais
+
+- [Notebook com análise e resultados salvos](notebook.ipynb).
+- [Artigo em PDF](artigo.pdf).
+- [Apresentação em PDF](apresentacao.pdf).
+
 ## O que foi medido
 
 - 20 perguntas, quatro cenários por documento: direto, duas etapas, distrator
@@ -48,18 +54,22 @@ não equivale a acerto integral: a avaliação também considera a justificativa
 Recusas de requisitos extras criados pelo planejador não entram nessa contagem.
 
 Avaliação retrospectiva de 40 cadeias de controle e 80 respostas finais.
-O procedimento está descrito em [DESENHO_EXPERIMENTAL.md](docs/DESENHO_EXPERIMENTAL.md).
-Relatório completo em
+O procedimento e a análise completa estão em
 [ANALISE_CONTROLE.md](docs/ANALISE_CONTROLE.md).
+A configuração e a implementação das variantes estão em
+[DESENHO_EXPERIMENTAL.md](docs/DESENHO_EXPERIMENTAL.md).
 
 **A rodada reúne revisões do Self-RAG em lote e por item.** As médias descrevem
 o conjunto observado, sem isolar o efeito de uma política uniforme de revisão.
-A proveniência da execução está em [INTEGRIDADE.md](docs/INTEGRIDADE.md).
+As formas de revisão por pergunta estão registradas em
+[self_revision_modes.csv](results/runs/20261018T182531677492Z_81b2dd68bc/self_revision_modes.csv).
 
 ## Organização
 
 ```text
 rag-control-lab/
+├── artigo.pdf                 # artigo do projeto
+├── apresentacao.pdf           # slides da apresentação
 ├── notebook.ipynb             # leitura e análise; inferência opcional
 ├── rag_lab.py                 # corpus, recuperação, geração e execução
 ├── rag_control.py             # políticas de controle

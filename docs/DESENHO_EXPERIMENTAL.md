@@ -51,10 +51,11 @@ A Condição A não avalia economia obtida pela escolha entre busca única e ite
 sem pacote injetado. Um diagnóstico de top-k foi explorado, mas mediu truncamento,
 não ganho ou perda de qualidade. Não é comparação de acurácia com baseline ampliado.
 
-**Mudança durante a coleta:** eventos Self-RAG mostram revisão em lote e por item;
-o código atual revisa cada alvo separadamente. `INTEGRIDADE.md` documenta os
-casos demonstráveis e as limitações das médias. Não chamar a rodada de protocolo
-uniforme congelado apenas porque os fingerprints finais coincidem.
+**Revisões observadas:** os registros do Self-RAG incluem revisão em lote e por
+item; o código atual revisa cada alvo separadamente. As formas observadas por
+pergunta estão em
+[self_revision_modes.csv](../results/runs/20261018T182531677492Z_81b2dd68bc/self_revision_modes.csv).
+As médias de custo descrevem o conjunto da coleta, sem isolar uma política uniforme.
 
 ## Implementação dos mecanismos
 
@@ -112,45 +113,3 @@ Há até três buscas por execução. No modo `full`, a busca inicial consome um
 no modo `controlled`, as três são adicionais ao pacote fornecido. Há um rascunho
 e uma etapa de revisão, que pode envolver uma geração por alvo. Todas as chamadas
 de planejamento, seleção, verificação e geração entram na contagem de custo.
-A distinção entre revisões conjuntas e por item nos registros está descrita em
-[INTEGRIDADE.md](INTEGRIDADE.md).
-
-## Execução e avaliação
-
-Uma semente (42), temperatura zero, 20 x 4 = 80 respostas. Dados persistidos
-em `traces.jsonl`, `answers.csv` e manifesto da rodada. Foram preservadas
-tentativas/interrupções registradas. Não há três repetições nesta coleta.
-
-Avaliação retrospectiva realizada por IA (Codex), sem confirmação humana
-independente e sem cegamento:
-20 perguntas, 40 cadeias de controle, 111 decisões de apoio e 80 respostas finais.
-As necessidades de referência são do pedido/rubrica conferidos nas fontes, não
-apenas as produzidas pelo planejador. Os critérios auxiliares são atendido,
-parcial, ausente ou errado; acerto integral exige todos e ausência de erro material.
-
-Indicadores principais: complementos úteis nos hits; complementos entregues;
-contexto suficiente; verificação de apoio; revisão útil/prejudicial; preservação;
-recusa adequada/indevida e esforço. Distinguir benefício sobre o próprio
-rascunho de benefício sobre o baseline. Efeitos mistos não são vitórias.
-
-Chamadas de planejamento, seleção, crítica e geração são contadas. Preparação
-e warmup ficam fora da latência online. No modo controlado, buscas registradas
-são extras ao pacote fornecido; zero no baseline é esperado. `abstained=True`
-significa ao menos um item recusado, inclusive requisitos extras do planejador.
-
-Não usar o parecer do controlador como avaliação independente de seu sucesso.
-Indeterminados são explicitados, não classificados como acertos/erros por conveniência.
-Não houve confirmação humana independente dos julgamentos nesta rodada.
-
-## Relação com a disciplina e alcance
-
-As páginas físicas 28/29 de lesson09.pdf listam Adaptive RAG/Self-RAG para F4,
-20 perguntas verificáveis, diagnóstico do baseline, tabela por categorias/custo,
-divergências explicadas e conclusão sustentada pelos dados. Também pedem três
-execuções do baseline, notebook no Colab, repositório, artigo, slides e apresentação.
-A configuração de uma semente é temporária e não comprova esses três baseline.
-
-Os métodos implementados são didáticos por prompts, sem treinamento dos
-mecanismos originais. Não há ablação que isole cada componente, holdout independente,
-teste de API ou demonstração de superioridade geral. Essa delimitação permite
-defender os ganhos e falhas observáveis sem ampliar o alcance dos resultados.

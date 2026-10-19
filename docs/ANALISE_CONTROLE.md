@@ -1,6 +1,7 @@
 # Avaliação dos mecanismos de controle
 
-Análise retrospectiva dos mecanismos, com procedimento descrito em
+Análise retrospectiva dos mecanismos, com procedimento descrito a seguir.
+A configuração e a implementação estão em
 [DESENHO_EXPERIMENTAL.md](DESENHO_EXPERIMENTAL.md). Não houve nova inferência,
 ajuste de prompts ou alteração dos dados brutos.
 
@@ -256,67 +257,3 @@ As explicações e os critérios individuais estão nos CSVs auxiliares.
 | Q18 | Entrega tasking; resposta contém explicação extra inadequada. | Melhora swap, mas protege estratégia falsa já aprovada. |
 | Q19 | Busca motivo de automação, não o entrega e piora referência. | Protege referência mal formulada e não entrega automação. |
 | Q20 | Busca sem melhorar justificativa da recusa. | Busca/revisão sem benefício; caráter futuro já estava disponível. |
-
-## Integridade, limitações e uso no artigo
-
-Os arquivos atuais são internamente consistentes: 80 combinações únicas,
-sementes/fingerprint alinhados, configuração e fontes do manifesto conferidas.
-Entretanto, na inspeção anterior o fingerprint era
-`81b2dd68bcba416cc55b028487eb1fe96cdc89ed8516d0e514c967f39048ad55`;
-agora é `866680b14025c326dcaf1187ea539db986e120f5c1f0c98e74718c094d19650d`,
-na mesma pasta. A história da atualização do manifesto e da retomada permanece
-sem esclarecimento. Hashes atuais não comprovam congelamento histórico. A análise
-registra a alteração, sem declarar que as respostas foram fabricadas ou que todas
-foram produzidas com código diferente.
-
-Também há caracterizações problemáticas de contexto e referências, registradas
-nas anotações de Q02, Q08, Q11, Q14, Q16, Q17 e Q19. Não corrigimos as entradas
-retroativamente nem excluímos casos. Uma única semente, corpus pequeno, casos
-vistos no desenvolvimento e avaliação retrospectiva limitam a generalização. A condição
-natural não foi avaliada aqui.
-
-O artigo pode demonstrar: (a) buscas que localizam lacunas; (b) perda do ganho
-na seleção; (c) correções do Self-RAG; (d) falsas aprovações e revisões nocivas;
-(e) custo adicional. Deve apresentar efeitos mistos e casos mal caracterizados,
-além dos exemplos favoráveis. Não há base para prometer superioridade geral,
-segurança em aplicações críticas ou que uma API resolveria os problemas observados.
-
-A exigência acadêmica de três execuções do baseline continua pendente na
-configuração de uma repetição. Essa análise não inicia novas execuções.
-
-
-### Esclarecimento da retomada na preparação da entrega
-
-A inspeção adicional de eventos comprovou revisões de múltiplos alvos em lote
-em Q02/Q03/Q06/Q07/Q08 e revisões por item em Q10/Q11/Q14/Q15/Q16/Q17/Q18/Q19.
-Quatro casos com um alvo são indistinguíveis; três não tiveram revisão.
-O código atual usa geração por item. Há uma tentativa truncada de Q10 registrada.
-Portanto, a diferença não é apenas uma dúvida sobre hashes: há duas formas de
-revisão nos dados. Os custos agregados são descritivos, não de uma política uniforme.
-Os casos e anotações semânticas acima permanecem preservados. A operação completa
-que atualizou os fingerprints não foi reconstruída. Veja INTEGRIDADE.md e
-`self_revision_modes.csv`. Nenhum dado bruto foi alterado para corrigir a proveniência.
-
-## Arquivos e reprodução offline
-
-Na pasta da rodada:
-
-- `review.json`: anotações explícitas, metodologia, hashes e ressalvas.
-- `control_by_question.csv`: 40 cadeias anotadas, com testemunhas de evidência.
-- `control_checks.csv`: 111 pareceres, texto julgado, recortes e anotação de apoio.
-- `control_summary.csv`, `control_support_summary.csv`,
-  `control_process.csv`: sínteses de mecanismos, apoio e custo.
-- `quality_evaluation.csv`, `quality_criteria.csv`, `quality_summary.csv` e
-  tabelas pareadas: avaliação final complementar.
-
-```bash
-.venv/bin/python scripts/analyze_control.py results/runs/20261018T182531677492Z_81b2dd68bc
-.venv/bin/python scripts/analyze_quality.py results/runs/20261018T182531677492Z_81b2dd68bc
-```
-
-Esses comandos consolidam julgamentos já registrados; não geram novas respostas
-nem usam o Ollama. Há verificações contra entradas alteradas, pares ausentes,
-testemunhas inventadas e entrega de evidência inexistente no contexto.
-`evaluation.csv` apresenta perguntas, respostas e referências. Os CSVs de entrega
-omitem os campos administrativos de revisão; o procedimento permanece descrito
-na metodologia e nos metadados de `review.json`.

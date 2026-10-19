@@ -16,8 +16,8 @@ def validate(root=ROOT):
     root=Path(root)
     required=['README.md','notebook.ipynb','rag_lab.py','rag_control.py','reporting.py',
               'requirements.txt','requirements-analysis.txt','configs/analysis.json','configs/experiment.json',
-              'questions.json','corpus/manifest.csv','docs/ANALISE_CONTROLE.md','docs/INTEGRIDADE.md',
-              'docs/REPRODUCAO.md','docs/DESENHO_EXPERIMENTAL.md']
+              'questions.json','corpus/manifest.csv','docs/README.md','docs/ANALISE_CONTROLE.md',
+              'docs/PERGUNTAS.md','docs/DESENHO_EXPERIMENTAL.md']
     missing=[p for p in required if not (root/p).is_file()]
     if missing:
         raise ValueError('Arquivos ausentes: '+', '.join(missing))
